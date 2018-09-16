@@ -1,6 +1,6 @@
 ## Algorithms & Data Structures
 
-Study algorithms and data structures in java
+Learn algorithms and data structures in java (keep updating)
 
 Princeton Algorithms: https://www.coursera.org/learn/algorithms-part1
 
