@@ -1,4 +1,6 @@
-public class twoSum2 {
+package leetcode;
+
+public class TwoSum2 {
 	
 	public int[] twoSum2(int[] nums, int target){
 		int low=0, high=nums.length-1;
@@ -17,7 +19,7 @@ public class twoSum2 {
 	}
 	
 	public static void main(String[] args){
-		twoSum2 obj = new twoSum2();
+		TwoSum2 obj = new TwoSum2();
 		System.out.println(obj.twoSum2(new int[]{2,7,9,11},9)[1]);
 	}
 }

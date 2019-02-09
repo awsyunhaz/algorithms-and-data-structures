@@ -1,5 +1,5 @@
 
-public class countBattleships {
+public class CountBattleships {
 	
     public int countBattleships(char[][] board) {
         int sum = 0;
