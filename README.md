@@ -2,7 +2,7 @@
 
 Learn algorithms and data structures in java (keep updating).
 
-## How to run a class without compiling the whole projects
+## Run a class without compiling the whole projects
 
 1. Switch to Eclipse compiler
 
