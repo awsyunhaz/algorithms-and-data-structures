@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.HashMap;
 
-//Hash map - O(NlogN)
+//Hash map - Time: O(N), Space: O(N)
 public class TwoSum_1 {
 
 	public int[] twoSum(int[] nums, int target) {
