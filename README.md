@@ -8,7 +8,7 @@ Learn algorithms and data structures in java (keep updating).
 
     In IntelliJ IDEA `Settings | Compiler | Java Compiler`, select `Eclipse compiler`, and then `Proceed on errors option` is enabled by default.
 
-2. Build without no error check
+2. Build without error check
 
     In the `Before launch` section of the `Run/Debug configuration`, remove `Build` and add `Build, no error check` instead.
 

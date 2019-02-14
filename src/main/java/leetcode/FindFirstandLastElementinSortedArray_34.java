@@ -5,7 +5,7 @@ public class FindFirstandLastElementinSortedArray_34 {
 
     // Return the first index of element >= target.
     private int getFirstIndexGreaterorEqual(int[] nums, int target){
-        // !hi is set to nums.length instead of nums.length-1.
+        // `hi` is set to nums.length instead of nums.length-1.
         // Return nums.length if target is greater than every
         // element in the array
         int lo = 0, hi = nums.length;
