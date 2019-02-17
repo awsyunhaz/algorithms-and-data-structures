@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Array;
 
 //O(n)
 //本解针对于next permutation为不同排列的情况。如：115的下一个为151

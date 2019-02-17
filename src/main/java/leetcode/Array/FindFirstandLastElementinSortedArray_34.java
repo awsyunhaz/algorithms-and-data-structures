@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Array;
 
 // binary search - O(logn)
 public class FindFirstandLastElementinSortedArray_34 {

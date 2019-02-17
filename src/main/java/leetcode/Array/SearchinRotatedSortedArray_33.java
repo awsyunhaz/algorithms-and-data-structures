@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Array;
 
 public class SearchinRotatedSortedArray_33 {
     //solution #1
