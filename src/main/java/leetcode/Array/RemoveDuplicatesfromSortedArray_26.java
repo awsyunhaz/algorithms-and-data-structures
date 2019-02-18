@@ -1,6 +1,6 @@
 package leetcode.Array;
 
-public class RemoveDuplicates_26 {
+public class RemoveDuplicatesfromSortedArray_26 {
     public int removeDuplicates(int[] nums) {
         if (nums.length<2)
             return nums.length;
@@ -13,7 +13,7 @@ public class RemoveDuplicates_26 {
     }
 
     public static void main(String[] args){
-        RemoveDuplicates_26 obj = new RemoveDuplicates_26();
+        RemoveDuplicatesfromSortedArray_26 obj = new RemoveDuplicatesfromSortedArray_26();
         System.out.println(obj.removeDuplicates(new int[]{1,1,2}));
     }
 }

@@ -26,7 +26,8 @@ public class SearchinRotatedSortedArray_33 {
 //        }
 //        return -1;
 
-    //Solution #2 - binary search, realmid
+    //Solution #2 - binary search (realmid)
+    //O(logn)
     public int search(int[] nums, int target) {
         int lo = 0, hi = nums.length-1;
         while (lo<hi){
