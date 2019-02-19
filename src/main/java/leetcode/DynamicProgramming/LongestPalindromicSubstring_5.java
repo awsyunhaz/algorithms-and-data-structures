@@ -12,7 +12,7 @@ public class LongestPalindromicSubstring_5 {
         int start = 0, end = 1, max = 1;
         for (int i = len-1; i >= 0; i--){
             for (int j = i+1; j < len; j++){
-                if (f[i][j-1] == 1 && s.charAt(j-1) == s.charAt(j)
+                if (j == i+1 && s.charAt(i) == s.charAt(j)
                         || f[i+1][j-1]==1 && s.charAt(i) == s.charAt(j)){
                     f[i][j] = 1;
                     if (j-i+1>max) {
