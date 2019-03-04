@@ -4,7 +4,8 @@ import java.util.*;
 
 public class LongestSubstringWithoutRepeatingCharacters_3 {
     public int lengthOfLongestSubstring(String s) {
-        // ArrayList - O(n^2)
+        // ArrayList
+        // O(n^2) - 20ms
 //        List<Character> list = new ArrayList<>();
 //        int max = 0;
 //        for (int i = 0; i < s.length(); i++){
@@ -21,7 +22,8 @@ public class LongestSubstringWithoutRepeatingCharacters_3 {
 //        }
 //        return max;
 
-        // Sliding Window - O(n), 2n step most
+        // Sliding Window + Hash set
+        // O(n), 2n step most - 23ms
 //        Set<Character> set = new HashSet<>();
 //        int max = 0, i = 0, j = 0, len = s.length();
 //        while (j < len){
@@ -34,7 +36,8 @@ public class LongestSubstringWithoutRepeatingCharacters_3 {
 //        }
 //        return max;
 
-        // Hash table - O(n), n step most
+        // Hash table
+        // O(n), n step most - 21ms
         HashMap<Character, Integer> map = new HashMap<>();
         int max = 0, i = 0, j = 0;
         while (j < s.length()){
