@@ -1,4 +1,4 @@
-package leetcode.Array;
+package leetcode.BinarySearch;
 
 // O(n)
 public class SearchinRotatedSortedArray2_81 {

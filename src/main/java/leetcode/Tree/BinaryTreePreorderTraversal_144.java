@@ -3,7 +3,7 @@ package leetcode.Tree;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryTreeInorderTraversal_94 {
+public class BinaryTreePreorderTraversal_144 {
     /**
      * Definition for a binary tree node.
      */
@@ -11,21 +11,24 @@ public class BinaryTreeInorderTraversal_94 {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
-    public List<Integer> inorderTraversal(TreeNode root) {
+    public List<Integer> preOrderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         traverse(root, result);
         return result;
     }
 
-    private void traverse(TreeNode root, List<Integer> result){
-        if (root!=null){
-            if (root.left!=null)
-                traverse(root.left, result);
+    private void traverse(TreeNode root, List<Integer> result) {
+        if (root != null) {
             result.add(root.val);
-            if (root.right!=null)
+            if (root.left != null)
+                traverse(root.left, result);
+            if (root.right != null)
                 traverse(root.right, result);
         }
     }
