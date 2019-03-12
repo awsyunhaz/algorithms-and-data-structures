@@ -11,27 +11,6 @@ public class NextPermutation_31 {
     }
 
     public void nextPermutation(int[] nums) {
-//        for (int head=nums.length-1; head>=0; head--){
-//            for (int tail=nums.length-1; tail>head; tail--){
-//                if (nums[tail]>nums[head]){
-//                    System.out.println(head);
-//                    int temp = nums[tail];
-//                    nums[tail] = nums[head];
-//                    nums[head] = temp;
-//                    for (int i=head+1; i<nums.length-1; i++){
-//                        for (int j=i+1; j<nums.length; j++){
-//                            if (nums[j]<nums[i]){
-//                                int temp2 = nums[j];
-//                                nums[j] = nums[i];
-//                                nums[i] = temp2;
-//                            }
-//                        }
-//                    }
-//                    return;
-//                }
-//            }
-//        }
-//        Arrays.sort(nums);
         int lo=nums.length-1, hi=nums.length-1;
         while (lo>0 && nums[lo-1]>=nums[lo]) lo--;
         lo--;
