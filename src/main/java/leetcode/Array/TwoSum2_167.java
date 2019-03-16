@@ -1,6 +1,6 @@
 package leetcode.Array;
 
-public class TwoSum2 {
+public class TwoSum2_167 {
 	
 	public int[] twoSum2(int[] nums, int target){
 		int low=0, high=nums.length-1;
@@ -19,7 +19,7 @@ public class TwoSum2 {
 	}
 	
 	public static void main(String[] args){
-		TwoSum2 obj = new TwoSum2();
+		TwoSum2_167 obj = new TwoSum2_167();
 		System.out.println(obj.twoSum2(new int[]{2,7,9,11},9)[1]);
 	}
 }

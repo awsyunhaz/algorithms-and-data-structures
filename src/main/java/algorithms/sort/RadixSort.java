@@ -1,4 +1,4 @@
-package sort;
+package algorithms.sort;
 
 import java.util.Scanner;
 
@@ -18,13 +18,13 @@ public class RadixSort {
 		print(a);
 	}
 	
-	public static void sort(int[] a, int d){  //d£º×î´óµÄÊýµÄÎ»Êý
+	public static void sort(int[] a, int d){  //dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 		
-		int n = 1;	//LSD -> ´ÓµÍÎ»µ½¸ßÎ»
-		int[][] temp = new int[10][a.length];  //µÚÒ»Î¬±íÊ¾ÓàÊý0-9
-		int[]order = new int[10];  //order[i]±íÊ¾¸ÃÎ»ÊÇiµÄÊýµÄ¸öÊý
+		int n = 1;	//LSD -> ï¿½Óµï¿½Î»ï¿½ï¿½ï¿½ï¿½Î»
+		int[][] temp = new int[10][a.length];  //ï¿½ï¿½Ò»Î¬ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½0-9
+		int[]order = new int[10];  //order[i]ï¿½ï¿½Ê¾ï¿½ï¿½Î»ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
 		
-		for (int m = 0; m < d; m++){	//¹Ø¼ü×ÖÎ»
+		for (int m = 0; m < d; m++){	//ï¿½Ø¼ï¿½ï¿½ï¿½Î»
 			for (int i = 0; i < a.length; i++){
 				int lsd = (a[i]/n)%10;
 				temp[lsd][order[lsd]] = a[i];
@@ -34,7 +34,7 @@ public class RadixSort {
 			for (int i = 0; i < 10; i++){
 				if (order[i] != 0){
 					for (int j = 0; j < order[i]; j++){
-						a[k] = temp[i][j];	//½«a[]¸ù¾Ý¹Ø¼ü×ÖÎ»ÖØÐÂÅÅÐò
+						a[k] = temp[i][j];	//ï¿½ï¿½a[]ï¿½ï¿½ï¿½Ý¹Ø¼ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						k++;
 					}
 				}

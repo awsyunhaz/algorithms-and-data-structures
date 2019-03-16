@@ -1,4 +1,4 @@
-package sort;
+package algorithms.sort;
 import java.util.*;
 
 public class BucketSort {
@@ -20,19 +20,19 @@ public class BucketSort {
 				min = a[i];
 		}
 		
-		int bucketNum = (max - min) / a.length + 1;;  //Í°Êý
+		int bucketNum = (max - min) / a.length + 1;;  //Í°ï¿½ï¿½
 		
 		int bucket[][] = new int[bucketNum][a.length];
-		int order[] = new int[bucketNum];	//¼ÇÂ¼Ã¿¸öÍ°ÄÚÔªËØ¸öÊý
+		int order[] = new int[bucketNum];	//ï¿½ï¿½Â¼Ã¿ï¿½ï¿½Í°ï¿½ï¿½Ôªï¿½Ø¸ï¿½ï¿½ï¿½
 		
-		//½«Ã¿¸öÔªËØ·ÅÈëÍ°
+		//ï¿½ï¿½Ã¿ï¿½ï¿½Ôªï¿½Ø·ï¿½ï¿½ï¿½Í°
 		for (int i = 0; i < a.length; i++){
 			int x = (a[i] - min) / (a.length);  
-			bucket[x][order[x]] = a[i];	//·ÅÈëµÚx¸öÍ°
+			bucket[x][order[x]] = a[i];	//ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½Í°
 			order[x]++;
 		}
 		
-		//¶ÔÃ¿¸öÍ°½øÐÐÅÅÐò
+		//ï¿½ï¿½Ã¿ï¿½ï¿½Í°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for(int i = 0; i < bucketNum; i++){
 	        sort(bucket[i],0,order[i]-1);
 	    }

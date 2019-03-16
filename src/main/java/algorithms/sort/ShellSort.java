@@ -1,4 +1,4 @@
-package sort;
+package algorithms.sort;
 
 import java.util.Scanner;
 
@@ -21,7 +21,7 @@ public class ShellSort {
 	private static void sort(int[] a){
 		int d = a.length/2;
 		while (d >= 1){
-			insertSort(a,d);	//ÔöÁ¿d
+			insertSort(a,d);	//ï¿½ï¿½ï¿½ï¿½d
 			d /= 2;
 		}
 	}
@@ -32,7 +32,7 @@ public class ShellSort {
 				int x = a[i];
 				a[i] = a[i-d];
 				int j;
-				for (j = i-d; j>=0 && x<a[j]; j-=d) //Öð¸öºóÒÆÕÒµ½Òª²åÈëµÄÎ»ÖÃ
+				for (j = i-d; j>=0 && x<a[j]; j-=d) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 					a[j+d] = a[j];
 				a[j+d] = x;
 			}

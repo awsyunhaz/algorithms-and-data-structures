@@ -2,7 +2,7 @@ package leetcode.HashTable;
 
 import java.util.*;
 
-// Categorize by sort (or by count)
+// Categorize by algorithms.sort (or by count)
 public class GroupAnagrams_49 {
     public List<List<String>> groupAnagrams(String[] strs) {
         HashMap<String, List<String>> map = new HashMap<>();

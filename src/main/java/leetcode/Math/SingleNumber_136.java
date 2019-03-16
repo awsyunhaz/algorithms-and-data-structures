@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class SingleNumber_136 {
     public int singleNumber(int[] nums) {
         //Sort - 3ms
-//        Arrays.sort(nums);
+//        Arrays.algorithms.sort(nums);
 //        for (int i = 0; i < nums.length-1; i+=2){
 //            if (nums[i]!=nums[i+1])
 //                return nums[i];

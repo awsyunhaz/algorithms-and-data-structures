@@ -1,4 +1,4 @@
-package sort;
+package algorithms.sort;
 
 import java.util.Scanner;
 
@@ -33,7 +33,7 @@ public class MergeSort {
 		int j = mid+1;
 		int k = 0;
 		
-		// °Ñ½ÏÐ¡µÄÊýÏÈÒÆµ½ÐÂÊý×éÖÐ 
+		// ï¿½Ñ½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		while (i <= mid && j <= high){
 			if (a[i] < a[j])
 				temp[k++] = a[i++];
@@ -41,12 +41,12 @@ public class MergeSort {
 				temp[k++] = a[j++];
 		}
 		
-		// °Ñ×ó±ßÊ£ÓàµÄÊýÒÆÈëÊý×é 
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		while (i <= mid){
 			temp[k++] = a[i++];
 		}
 		
-		// °ÑÓÒ±ß±ßÊ£ÓàµÄÊýÒÆÈëÊý×é 
+		// ï¿½ï¿½ï¿½Ò±ß±ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		while (j <= high){
 			temp[k++] = a[j++];
 		}
