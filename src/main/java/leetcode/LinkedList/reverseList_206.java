@@ -24,6 +24,7 @@ public class reverseList_206 {
         // Recursive
         if (head==null || head.next==null)
             return head;
+        // new head after reversion
         ListNode node = reverseList(head.next);
         head.next.next = head;
         head.next = null;
