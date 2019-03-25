@@ -1,5 +1,6 @@
+package leetcode;
 
-public class CountBattleships {
+public class BattleshipsinaBoard_419 {
 	
     public int countBattleships(char[][] board) {
         int sum = 0;

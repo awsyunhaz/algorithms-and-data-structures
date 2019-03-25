@@ -1,6 +1,6 @@
-package leetcode;
+package leetcode.Math;
 
-public class ReverseInteger {
+public class ReverseInteger_7 {
 	
 	public int reverse(int x){
 
@@ -18,7 +18,7 @@ public class ReverseInteger {
 	}
 	
 	public static void main(String[] args){
-		ReverseInteger obj = new ReverseInteger();
+		ReverseInteger_7 obj = new ReverseInteger_7();
 		System.out.println(obj.reverse(1534236469));
 	}
 
