@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Greedy;
 
 public class JumpGame_55 {
 //    // O(mn) - 237ms
