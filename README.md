@@ -13,12 +13,12 @@ Learn algorithms and data structures in java (keep updating).
     In the `Before launch` section of the `Run/Debug configuration`, remove `Build` and add `Build, no error check` instead.
 
 ## Resources
-* Princeton Algorithms: https://www.coursera.org/learn/algorithms-part1
-
-* Leetcode: https://leetcode.com/
-
-* Lintcode: https://www.lintcode.com/
-
-* 牛客网： https://www.nowcoder.com/
-
-* VisuAlgo: https://visualgo.net/en
+### Online resources
+* [Leetcode](https://www.leetcode.com/)
+* [Lintcode](https://www.lintcode.com/)
+* [NowCoder(牛客网)](https://www.nowcoder.com/)
+* [VisuAlgo](https://visualgo.net/en)
+### Courses
+* [Princeton AlgorithmsI](https://www.coursera.org/learn/algorithms-part1)
+* [Berkeley CS61B](http://datastructur.es/sp17/)
+* [HKU ELEC2543](https://learning.hku.hk/catalog/course/elec2543/)

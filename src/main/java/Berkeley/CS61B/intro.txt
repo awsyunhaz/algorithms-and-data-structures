@@ -1,0 +1,25 @@
+1. All code in Java must be part of a class.
+2. For code to run we need public static void main(String[] args)
+
+Variables
+1. Statically typed: Before Java variables can be used, they must be declared a specific type, which can never change.
+2. Types are verified before the code even runs!!!
+
+Static typing
+Good:
+a. Catches certain types errors, easier on the programmer to debug
+b. Type errors can (almost) never occur on the end user's computer
+c. Easier to read and reason about code
+d. Codes run more efficiently, e.g. no need to do expensive runtime type checks
+Bad:
+a. Code is more verbose
+b. Less general. There is a way around this in Java(generics)
+
+
+Functions
+1. Functions must be declared as part of a class in Java.
+   A function that is part of a class is called a "method".
+   So in Java, all functions are methods.
+2. All parameters of a function must have a declared type,
+   and the return value of the function must have a declared type.
+   Functions in Java return only one value!
