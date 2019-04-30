@@ -1,5 +1,6 @@
-1. All code in Java must be part of a class.
+1. All code in Java must be part of a class
 2. For code to run we need public static void main(String[] args)
+3. Unlike Python, statements are grouped by braces, and NOT by indentation
 
 Variables
 1. Statically typed: Before Java variables can be used, they must be declared a specific type, which can never change.
@@ -14,7 +15,6 @@ d. Codes run more efficiently, e.g. no need to do expensive runtime type checks
 Bad:
 a. Code is more verbose
 b. Less general. There is a way around this in Java(generics)
-
 
 Functions
 1. Functions must be declared as part of a class in Java.

@@ -1,0 +1,11 @@
+Compilation
+HelloWorld.java -> (compiler `javac HelloWorld.java`) -> HelloWorld.class
+-> (interpreter `java -cp . HelloWorld`) -> run
+1. .class file has been typed checked: safer
+2. .class file are simpler for machine to execute: faster
+3. No need to give source code: protect intellectual property
+
+Instance method (non-static method): the method is going to be invoked by an instance of the class.
+Declaration & instantiation: Dog smallDog = new Dog(10);
+Static members are invoked using the class name(e.g. Math.round(5.6)); non-static members are invoked using an instance name
+
