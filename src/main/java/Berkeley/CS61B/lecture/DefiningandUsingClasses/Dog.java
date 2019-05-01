@@ -1,4 +1,4 @@
-package Berkeley.CS61B.Lecture.DefiningandUsingClasses;
+package Berkeley.CS61B.lecture.DefiningandUsingClasses;
 
 public class Dog {
     public int weight;
