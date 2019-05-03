@@ -1,0 +1,20 @@
+Create new array:
+1. int[] a = new int[3];
+2. int[] a = new int[]{1, 2, 3, 5};
+3. int[] a = {1, 2, 3, 5};
+
+System.arraycopy(b, 0, x, 3, 2)
+@params: source array, start position in source, target array, start position in target, number to copy
+
+Create a 2D array: references of references
+1. int [][] a = new int[4][]; -> create 1 array of int array references, each of which is allowed to point at an array
+    a[0] = new int[]{1, 2};
+2. int [][] a = new int[4][4]; -> create 5 total arrays: 1 array of int array references, and 4 int array references
+3. int [][] a = new int[][]{{1}, {1, 2}, {1, 2, 1}, {1, 3, 3, 1}};
+
+Arrays vs. Classes
+1. Arrays and classes can both be used to organize a fixed number of memory boxes:
+    Array box can be accessed using [] notation;
+    Class box can be accessed using . notation;
+2. Array box must all be of the same type;
+    class box may be of different types

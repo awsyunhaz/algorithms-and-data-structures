@@ -1,0 +1,17 @@
+9 types in Java: 8 primitive types (byte, short, int, long, float, double, boolean, char) + Object
+Declare a variable of certain type -> computer sets aside exactly bits to hold a thing of that type (int: 32 bit; double: 64 bit)
+Golden rule of Equal: y = x -> copy all bits from x into y
+
+Declare an object: Object obj;
+-> Java allocates exactly a box of size 64 bits, and set them to zero
+
+Instantiate an object: obj = new Object(1000, 8.3);
+-> momery box of 64 bits that stores reference, and 32 bit to store int size and 64 bit to store double size
+-> return the 64 bits address of the newly created object
+1. First allocate a box of bits for each instance variable and fill them with a default value (0 or null)
+2. The constructor usually fills them with some other value
+
+Assignment of arrays: int[] a = new int[]{1, 2, 4, 8};
+1. Declaration: creates a 64 bit box for storing a int array address.
+2. Instantiation: creates new objects (int array).
+3. Assignment: puts the address of new object into the 64 bit box.

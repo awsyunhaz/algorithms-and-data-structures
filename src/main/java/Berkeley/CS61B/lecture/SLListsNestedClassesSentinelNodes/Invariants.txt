@@ -1,0 +1,5 @@
+An invariant is a condition that is guarantee to be true during execution
+An SLList with invariant:
+1. The sentinel reference always reference to sentinel node
+2. The first node (if it exists), is always sentinel.next
+-> To avoid special cases (e.g. first is null), which can be annoying in complex conditions

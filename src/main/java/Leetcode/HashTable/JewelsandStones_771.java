@@ -1,5 +1,7 @@
 package Leetcode.HashTable;
 
+import java.util.HashSet;
+
 public class JewelsandStones_771 {
     public int numJewelsInStones(String J, String S) {
         HashSet<Character> seen = new HashSet<>();
