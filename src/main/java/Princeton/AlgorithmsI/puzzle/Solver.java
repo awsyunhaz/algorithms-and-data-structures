@@ -1,4 +1,4 @@
-package puzzle;
+package Princeton.AlgorithmsI.puzzle;
 
 import edu.princeton.cs.algs4.MinPQ;
 import java.util.Comparator;

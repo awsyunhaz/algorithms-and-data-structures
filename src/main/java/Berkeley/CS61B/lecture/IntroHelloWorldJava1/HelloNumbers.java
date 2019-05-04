@@ -1,4 +1,4 @@
-package Berkeley.CS61B.lecture.IntroHelloWorldJava;
+package Berkeley.CS61B.lecture.IntroHelloWorldJava1;
 
 public class HelloNumbers {
 	public static void main(String[] args) {

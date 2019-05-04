@@ -1,0 +1,6 @@
+Generic arrays are not allowed in java
+We cannot do Item[] items = new Item[100];
+Use cast: Item[] items = (Item[])new Object[100];
+
+Java only destroys unwanted objects when the last reference has been lost
+Don't keep references the unneeded objects (loitering)

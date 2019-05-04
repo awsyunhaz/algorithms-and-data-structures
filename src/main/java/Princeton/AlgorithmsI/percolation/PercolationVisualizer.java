@@ -1,4 +1,4 @@
-package percolation;
+package Princeton.AlgorithmsI.percolation;
 /******************************************************************************
  *  Compilation:  javac PercolationVisualizer.java
  *  Execution:    java PercolationVisualizer input.txt

@@ -1,4 +1,4 @@
-package Berkeley.CS61B.lecture.DefiningandUsingClasses;
+package Berkeley.CS61B.lecture.DefiningandUsingClasses2;
 
 public class DogLauncher {
     public static void main(String[] args){

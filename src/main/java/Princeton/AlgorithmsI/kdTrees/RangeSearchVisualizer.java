@@ -11,7 +11,7 @@
  *  in red; the results using the kd-tree algorithms are drawn in blue.
  *
  ******************************************************************************/
-package kdTrees;
+package Princeton.AlgorithmsI.kdTrees;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Point2D;

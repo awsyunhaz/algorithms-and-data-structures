@@ -1,4 +1,4 @@
-package queues;
+package Princeton.AlgorithmsI.queues;
 import java.util.Iterator;
 
 public class Deque<Item> implements Iterable<Item> {

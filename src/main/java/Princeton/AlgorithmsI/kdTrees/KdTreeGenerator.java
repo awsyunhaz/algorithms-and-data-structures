@@ -13,7 +13,7 @@
  *  0.649952 0.237188
  *
  ******************************************************************************/
-package kdTrees;
+package Princeton.AlgorithmsI.kdTrees;
 
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdOut;

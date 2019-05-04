@@ -1,4 +1,4 @@
-package linePattern;
+package Princeton.AlgorithmsI.linePattern;
 
 /*************************************************************************
  *  Compilation:  javac LineSegment.java

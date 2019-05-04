@@ -1,4 +1,4 @@
-//package Berkeley.CS61B.assignment.lab1;
+//package Berkeley.CS61B.lab.lab1;
 
 /** Class that determines whether or not a year is a leap year.
  *  @author Joeyhaohao

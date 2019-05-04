@@ -1,0 +1,5 @@
+IntList problems can be tricky to think about, and there are always several approaches which can work. Don't be afraid to pull out pen and paper or go to the whiteboard and work out some examples! If you get stuck, drawing out the pointers can probably stimulate you back onto the path of progress. And, as always, the debugger is a great option!
+
+Feel free to use either recursion or iteration. For extra practice, try both!
+
+It's also often useful to first think about base cases (when A is null, for example) - this works especially well for building up a recursive solution. In other words, write up a solution that would work for the base case, then stop and think about how to expand this solution into something that works for other bigger cases.

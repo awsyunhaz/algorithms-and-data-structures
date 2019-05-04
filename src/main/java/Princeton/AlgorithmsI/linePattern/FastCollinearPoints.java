@@ -1,4 +1,4 @@
-package linePattern;
+package Princeton.AlgorithmsI.linePattern;
 
 import java.util.Arrays;
 import java.util.ArrayList;

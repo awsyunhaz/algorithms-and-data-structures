@@ -10,7 +10,7 @@
  *  in red; the nearest neighbor using the kd-tree algorithm is drawn in blue.
  *
  ******************************************************************************/
-package kdTrees;
+package Princeton.AlgorithmsI.kdTrees;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Point2D;
