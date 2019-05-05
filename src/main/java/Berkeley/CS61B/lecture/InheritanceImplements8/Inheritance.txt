@@ -1,0 +1,13 @@
+Overloading: multiple methods with the same name, but different parameters
+Overriding: a subclass has a method with the same signature
+
+Interface inheritance: subclass inherits only signatures
+1. Specifies what subclass can do, but not how
+2. Subclasses must override all methods
+
+Implementation inheritance: subclass inherits signatures and implementations (use 'default' keyword)
+! Breaks encapsulation
+
+Each variable has a "static type" (a.k.a. "compile-time type") specified at declaration. Never changes!
+and a "dynamic type" (a.k.a. "run-time type") specified at instantiation
+If class overrides the method, its method is used instead.
