@@ -7,27 +7,25 @@ import java.util.List;
 //Sort + 2 pointer - O(N^2)
 public class ThreeSum_15 {
     public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
-        ArrayList<List<Integer>> result = new ArrayList<>();
-        for (int i=0; i<nums.length-2; i++){
-            if (i==0 || (i>0 && nums[i-1]!=nums[i])){
-                int low=i+1, high=nums.length-1;
-                while (low<high) {
-                    int sum = nums[i] + nums[low] + nums[high];
-                    if (sum == 0) {
-                        result.add(Arrays.asList(nums[i], nums[low], nums[high]));
-//                        条件语句如果颠倒顺序会出现越界错误
-                        while (low < high && nums[low] == nums[low + 1]) low++;
-                        while (low < high && nums[high] == nums[high - 1]) high--;
-                        low++; high--;
-                    } else if (sum < 0)
-                        low++;
-                    else
-                        high--;
+        for (int i = 0; i < nums.length-2; i++){
+            if (i > 0 && nums[i] == nums[i-1])
+                continue;
+            int lo = i + 1, hi = nums.length - 1;
+            while (lo < hi){
+                while (lo < hi && nums[lo] + nums[hi] + nums[i] < 0)
+                    lo++;
+                while (lo < hi && nums[lo] + nums[hi] + nums[i] > 0)
+                    hi--;
+                if (lo < hi && nums[lo] + nums[hi] + nums[i] == 0){
+                    res.add(Arrays.asList(nums[lo], nums[hi], nums[i]));
+                    while (lo < hi && nums[lo] == nums[++lo]);
+                    while (lo < hi && nums[hi] == nums[--hi]);
                 }
             }
         }
-        return result;
+        return res;
     }
 
     public static void main(String[] args){

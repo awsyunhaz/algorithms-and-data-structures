@@ -16,3 +16,4 @@ config/pmd/ruleset.xml
 .pmd
 venv/
 *.class
+*.DS_Store
