@@ -8,6 +8,7 @@ public class MaximumSubarray_53 {
         f[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {
             f[i] = Math.max(f[i-1] + nums[i], nums[i]);
+//            f[i] = f[i-1] < 0? nums[i]: f[i-1] + nums[i];   - work the same
             if (f[i] > max)
                 max = f[i];
         }
