@@ -1,8 +1,8 @@
 package Leetcode.HashTable;
 
 public class IsomorphicStrings_205 {
-    public boolean isIsomorphic(String s, String t) {
-        // Hashmap - 10ms
+    // Hashmap - 10ms
+//    public boolean isIsomorphic(String s, String t) {
 //        HashMap<Character, Character> map = new HashMap<>();
 //        for (int i = 0; i < s.length(); i++){
 //            if (map.containsKey(s.charAt(i))) {
@@ -17,12 +17,37 @@ public class IsomorphicStrings_205 {
 //        }
 //        return true;
 
-        // Char array as map - 4ms
-        int[] map1 = new int[256], map2 = new int[256];
-        for (int i=0; i<s.length(); i++){
-            if (map1[s.charAt(i)]!=map2[t.charAt(i)])
+    // Two array - 3ms
+//    public boolean isIsomorphic(String s, String t) {
+//        if (s.length() != t.length()){
+//            return false;
+//        }
+//        char[] sarr = new char[128];
+//        char[] tarr = new char[128];
+//        for (int i = 0; i < s.length(); i++){
+//            char si = s.charAt(i);
+//            char ti = t.charAt(i);
+//            if (sarr[si] == 0 && tarr[ti] == 0){
+//                sarr[si] = ti;
+//                tarr[ti] = si;
+//            }
+//            else{
+//                if (sarr[si] != ti || tarr[ti] != si){
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+//    }
+
+    // Two array - smarter
+    public boolean isIsomorphic(String s, String t) {
+        int[] sarr = new int[128], tarr = new int[128];
+        for (int i = 0; i < s.length(); i++){
+            char sind = s.charAt(i), tind = t.charAt(i);
+            if (sarr[sind] != tarr[tind])
                 return false;
-            map1[s.charAt(i)] = map2[t.charAt(i)] = i+1;
+            sarr[sind] = tarr[tind] = i+1;
         }
         return true;
     }
