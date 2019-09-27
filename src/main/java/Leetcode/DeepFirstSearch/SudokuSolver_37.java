@@ -1,58 +1,46 @@
 package Leetcode.DeepFirstSearch;
 
 public class SudokuSolver_37 {
+
+    // DFS -5ms
     public void solveSudoku(char[][] board) {
-        solve(board, 0);
+        solve(board);
     }
 
-    // 10ms
-//    private boolean solve(char[][] board){
-//        for (int i = 0; i < 9; i++){
-//            for (int j = 0; j < 9; j++){
-//                if (board[i][j]=='.'){
-//                    for (char c = '1'; c <= '9'; c++){
-//                        if (isValid(board, i, j, c)){
-//                            board[i][j] = c;
-//                            if (solve(board))
-//                                return true;
-//                            else
-//                                board[i][j] = '.';
-//                        }
-//                    }
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
-
-    //DFS - 7ms
-    private boolean solve(char[][] board, int pos){
-        if (pos >= 81)
-            return true;
-        int i = pos/9, j = pos%9;
-        if (board[i][j]=='.'){
-            for (char c = '1'; c <= '9'; c++){
-                if (isValid(board, i, j, c)){
-                    board[i][j] = c;
-                    if (solve(board, pos+1))
-                        return true;
-                    else
-                        board[i][j] = '.';
+    public boolean solve(char[][] board){
+        for (int i = 0; i < 9; i++){
+            for (int j = 0; j < 9; j++){
+                if (board[i][j] == '.'){
+                    for (char c = '1'; c <= '9'; c++){
+                        if (isValid(board, i, j, c)){
+                            board[i][j] = c;
+                            if (solve(board))
+                                return true;
+                            else
+                                board[i][j] = '.';
+                        }
+                    }
+                    return false;
                 }
             }
-            return false;
         }
-        else
-            return solve(board, pos+1);
+        return true;
     }
 
-    private boolean isValid(char[][] board, int i, int j, char c) {
-        for (int k = 0; k < 9; k++){
-            int m = i/3*3 + k/3;
-            int n = j/3*3 + k%3;
-            if (board[i][k]==c || board[k][j]==c || board[m][n]==c)
+    public boolean isValid(char[][] board, int i, int j, char c){
+        for (int col = 0; col < 9; col++){
+            if (board[i][col] == c)
                 return false;
+        }
+        for (int row = 0; row < 9; row++){
+            if (board[row][j] == c)
+                return false;
+        }
+        for (int row = i/3*3; row < i/3*3+3; row++){
+            for (int col = j/3*3; col < j/3*3+3; col++){
+                if (board[row][col] == c)
+                    return false;
+            }
         }
         return true;
     }

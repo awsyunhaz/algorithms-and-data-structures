@@ -13,4 +13,11 @@ public class UniqueBinarySearchTrees_96 {
         }
         return f[n];
     }
+
+    public static void main(String[] args){
+        UniqueBinarySearchTrees_96 obj = new UniqueBinarySearchTrees_96();
+        for (int i = 1; i <= 8; i ++) {
+            System.out.println(obj.numTrees(i));
+        }
+    }
 }
