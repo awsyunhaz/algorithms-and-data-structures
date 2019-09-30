@@ -1,4 +1,4 @@
-package Leetcode.HashTable;
+package Leetcode.HashMap;
 
 public class IsomorphicStrings_205 {
     // Hashmap - 10ms

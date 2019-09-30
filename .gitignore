@@ -3,6 +3,7 @@
 bin/
 build/
 out/
+output/
 .classpath
 .project
 target/
@@ -17,3 +18,4 @@ config/pmd/ruleset.xml
 venv/
 *.class
 *.DS_Store
+Google/
