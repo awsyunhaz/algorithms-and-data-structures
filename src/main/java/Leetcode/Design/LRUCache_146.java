@@ -10,7 +10,7 @@ public class LRUCache_146 {
     private int size;
     private HashMap<Integer, DLinkedNode> map;
 
-    public LRUCache(int capacity) {
+    public LRUCache_146(int capacity) {
         map = new HashMap<>();
         head = new DLinkedNode();
         tail = new DLinkedNode();

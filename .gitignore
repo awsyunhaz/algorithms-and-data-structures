@@ -18,4 +18,3 @@ config/pmd/ruleset.xml
 venv/
 *.class
 *.DS_Store
-Google/
