@@ -9,7 +9,7 @@ public class FindFirstandLastElementinSortedArray_34 {
         // Return nums.length if target is greater than every
         // element in the array
         int lo = 0, hi = nums.length;
-        while (lo<hi){
+        while (lo < hi){
             int mid = (lo + hi)/2;
             if (nums[mid] < target)
                 lo = mid + 1;
