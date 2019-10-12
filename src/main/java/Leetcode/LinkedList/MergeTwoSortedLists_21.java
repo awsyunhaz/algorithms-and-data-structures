@@ -10,7 +10,7 @@ public class MergeTwoSortedLists_21 {
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        // Iterative - 5ms
+        // Iteration - 5ms
         ListNode head = new ListNode(0), node = head;
         while (l1 != null && l2 != null) {
             if (l1.val < l2.val) {
@@ -29,6 +29,7 @@ public class MergeTwoSortedLists_21 {
     }
 
         // Recursion - O(n) 5ms
+//    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 //        if (l1 == null) return l2;
 //        if (l2 == null) return l1;
 //        if (l1.val <= l2.val) {

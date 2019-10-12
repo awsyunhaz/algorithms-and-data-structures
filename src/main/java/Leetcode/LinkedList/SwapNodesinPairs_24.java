@@ -7,8 +7,24 @@ public class SwapNodesinPairs_24 {
         ListNode(int x) { val = x; }
     }
 
+    // Iteration
+//    public ListNode swapPairs(ListNode head) {
+//        ListNode dummy = new ListNode(0);
+//        dummy.next = head;
+//        ListNode last = dummy;
+//        while (head != null && head.next != null){
+//            ListNode tmp = head.next.next;
+//            last.next = head.next;
+//            last.next.next = head;
+//            head.next = tmp;
+//            last = head;
+//            head = tmp;
+//        }
+//        return dummy.next;
+//    }
+
+    // Recursion
     public ListNode swapPairs(ListNode head) {
-        // Recursion - 2ms
         if (head==null || head.next==null)
             return head;
         ListNode node = head.next;
