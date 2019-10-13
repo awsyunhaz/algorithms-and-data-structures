@@ -1,4 +1,4 @@
-package Leetcode.Array;
+package Leetcode.TwoPointers;
 
 //2 pointer - O(N)
 public class ContainerWithMostWater_11 {
