@@ -1,4 +1,4 @@
-package Leetcode.Stack;
+package Leetcode.Recursion;
 
 import java.util.Stack;
 
