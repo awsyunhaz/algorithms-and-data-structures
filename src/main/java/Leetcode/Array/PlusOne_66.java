@@ -1,4 +1,4 @@
-package Leetcode.Math;
+package Leetcode.Array;
 
 public class PlusOne_66 {
     public int[] plusOne(int[] digits) {
