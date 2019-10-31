@@ -1,9 +1,6 @@
 package Leetcode.HashMap;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class LoggerRateLimiter_359 {
 
@@ -26,37 +23,29 @@ public class LoggerRateLimiter_359 {
 //    }
 
 
-    // Queue + HashSet: only keep the most recent messages within 10s
-    private Queue<Log> messageQueue;
-    private HashSet<String> recentMessage;
+    // Queue + HashMap: only keep the most recent messages within 10s
+    HashMap<String, Integer> map;
+    Queue<String> logs;
+
     /** Initialize your data structure here. */
     public LoggerRateLimiter_359() {
-        messageQueue = new LinkedList<>();
-        recentMessage = new HashSet<>();
-    }
-
-    class Log {
-        int timestamp;
-        String message;
-        public Log(int t, String m){
-            timestamp = t;
-            message = m;
-        }
+        map = new HashMap<>();
+        logs = new ArrayDeque<>();
     }
 
     /** Returns true if the message should be printed in the given timestamp, otherwise returns false.
      If this method returns false, the message will not be printed.
      The timestamp is in seconds granularity. */
     public boolean shouldPrintMessage(int timestamp, String message) {
-        while (!messageQueue.isEmpty() && timestamp - messageQueue.peek().timestamp >= 10) {
-            Log log = messageQueue.poll();
-            recentMessage.remove(log.message);
+        while (logs.size() > 0 && timestamp - map.get(logs.peek()) >= 10) {
+            map.remove(logs.poll());
         }
-        if (!recentMessage.contains(message)){
-            recentMessage.add(message);
-            messageQueue.offer(new Log(timestamp, message));
+        if (map.containsKey(message)){
+            return false;
+        } else {
+            map.put(message, timestamp);
+            logs.offer(message);
             return true;
         }
-        return false;
     }
 }

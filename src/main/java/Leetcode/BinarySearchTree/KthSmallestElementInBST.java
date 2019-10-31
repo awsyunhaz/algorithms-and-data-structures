@@ -12,6 +12,20 @@ public class KthSmallestElementInBST {
         TreeNode(int x) { val = x; }
     }
 
+//    public int kthSmallest(TreeNode root, int k) {
+//        List<Integer> lis = new ArrayList<>();
+//        traverse(root, lis, k);
+//        return lis.get(k-1);
+//    }
+//
+//    public void traverse(TreeNode root, List<Integer> lis, int k) {
+//        if (lis.size() == k || root == null)
+//            return;
+//        traverse(root.left, lis, k);
+//        lis.add(root.val);
+//        traverse(root.right, lis, k);
+//    }
+
     private int rank = 0, res = 0;
     public int kthSmallest(TreeNode root, int k) {
         traverse(root, k);
