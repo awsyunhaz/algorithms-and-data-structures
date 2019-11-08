@@ -1,4 +1,4 @@
-package Leetcode.Math;
+package Leetcode.BinarySearch;
 
 public class Power_50 {
     public double myPow(double x, long n) {

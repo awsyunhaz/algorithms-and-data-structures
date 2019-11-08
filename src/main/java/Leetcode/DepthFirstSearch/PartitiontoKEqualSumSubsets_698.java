@@ -1,4 +1,4 @@
-package Leetcode.DeepFirstSearch;
+package Leetcode.DepthFirstSearch;
 
 public class PartitiontoKEqualSumSubsets_698 {
 

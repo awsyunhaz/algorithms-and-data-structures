@@ -8,7 +8,7 @@ public class DivideTwoIntegers_29 {
         long dividend_l = Math.abs((long)dividend);
         long divisor_l =  Math.abs((long)divisor);
         long res = search(dividend_l, divisor_l);
-        // Edge case
+        // Corner case
         if (res>Integer.MAX_VALUE && sign==1)
             return Integer.MAX_VALUE;
         return (int)(sign*res);

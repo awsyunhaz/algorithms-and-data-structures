@@ -2,7 +2,8 @@ package Leetcode.HashMap;
 
 import java.util.*;
 
-// Categorize by algorithms.sort (or by count)
+// Categorize by sorted string - O(nklogk)
+// Or by a counter (e.g. 1a2b)
 public class GroupAnagrams_49 {
     public List<List<String>> groupAnagrams(String[] strs) {
         HashMap<String, List<String>> map = new HashMap<>();

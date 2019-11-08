@@ -1,4 +1,4 @@
-package Leetcode.DeepFirstSearch;
+package Leetcode.DepthFirstSearch;
 
 public class NQueens2_52 {
     private int res = 0;

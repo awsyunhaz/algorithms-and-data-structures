@@ -1,7 +1,4 @@
-package Leetcode.DeepFirstSearch;
-
-import java.util.LinkedList;
-import java.util.Queue;
+package Leetcode.DepthFirstSearch;
 
 public class NumofIslands {
     // DFS - 1ms

@@ -1,4 +1,4 @@
-package Leetcode.DeepFirstSearch;
+package Leetcode.DepthFirstSearch;
 
 import java.util.ArrayList;
 import java.util.List;

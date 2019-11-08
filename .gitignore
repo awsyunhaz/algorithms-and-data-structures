@@ -18,4 +18,4 @@ config/pmd/ruleset.xml
 venv/
 *.class
 *.DS_Store
-interviews/
+OA/
