@@ -25,7 +25,7 @@ public class Triangle_120 {
 //        return min;
 //    }
 
-    // Bottom up - O(n) space
+    // 1d DP, O(n) space: Bottom up
     public int minimumTotal(List<List<Integer>> triangle) {
         int[] res = new int[triangle.size() + 1];
         for (int i = triangle.size()-1; i >= 0; i--) {
