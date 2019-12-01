@@ -1,8 +1,22 @@
-package Leetcode.DivideandConquer;
+package Leetcode.Stack;
 
 import java.util.Stack;
 
 public class LargestRectangleInHistogram_84 {
+
+    // Brute force - O(n^2)
+//    public int largestRectangleArea(int[] heights) {
+//        int maxArea = 0;
+//        for (int i = 0; i < heights.length; i++) {
+//            int minH = heights[i];
+//            for (int j = i; j < heights.length; j++) {
+//                minH = Math.min(minH, heights[j]);
+//                maxArea = Math.max(maxArea, (j-i+1)*minH);
+//            }
+//        }
+//        return maxArea;
+//    }
+
     // Divide and Conquer - O(nlgn), O(n^2) worst (sorted array)
 //    public int largestRectangleArea(int[] heights) {
 //        if (heights.length == 0)
@@ -26,27 +40,21 @@ public class LargestRectangleInHistogram_84 {
 
     // Stack - O(n)
     public int largestRectangleArea(int[] heights) {
-        if (heights.length == 0)
-            return 0;
-        int maxArea = 0;
         Stack<Integer> stack = new Stack<>();
-        int i = 0;
+        int i = 0, maxArea = 0;
         while (i < heights.length) {
             if (stack.isEmpty() || heights[i] >= heights[stack.peek()]) {
                 stack.push(i++);
             } else {
-                int ind = stack.peek();
-                stack.pop();
+                int bar = stack.pop();
                 int left = stack.isEmpty()? 0: stack.peek()+1;
-                maxArea = Math.max(maxArea, (i-left)*heights[ind]);
+                maxArea = Math.max(maxArea, heights[bar]*(i-left));
             }
         }
-        int right = heights.length;
         while (!stack.isEmpty()) {
-            int ind = stack.peek();
-            stack.pop();
+            int bar = stack.pop();
             int left = stack.isEmpty()? 0: stack.peek()+1;
-            maxArea = Math.max(maxArea, (i-left)*heights[ind]);
+            maxArea = Math.max(maxArea, heights[bar]*(i-left));
         }
         return maxArea;
     }

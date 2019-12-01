@@ -10,21 +10,19 @@ public class ReverseLinkedList2_92 {
     public ListNode reverseBetween(ListNode head, int m, int n) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode curr = dummy;
-        for (int i=0; i<m-1; i++)
-            curr = curr.next;
-        ListNode before = curr;
-        curr = curr.next;
-        ListNode succ = curr.next;
-        ListNode prev = curr;
-        for (int i=m; i<n; i++){
-            curr = succ;
-            succ = succ.next;
-            curr.next = prev;
-            prev = curr;
+        ListNode prev = dummy;
+        for (int i = 0; i < m-1; i++) {
+            prev = prev.next;
         }
-        before.next.next = succ;
-        before.next = curr;
+        ListNode slow = prev.next, fast = slow.next;
+        for (int i = m; i < n; i ++) {
+            ListNode succ = fast.next;
+            fast.next = slow;
+            slow = fast;
+            fast = succ;
+        }
+        prev.next.next = fast;
+        prev.next = slow;
         return dummy.next;
     }
 }

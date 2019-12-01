@@ -1,4 +1,4 @@
-package Leetcode.Tree;
+package Leetcode.Heap;
 
 import java.util.*;
 
@@ -6,43 +6,42 @@ public class TopKFrequentElements_347 {
 
 	public List<Integer> topKFrequent(int[] nums, int k) {
 		// BucketSort - 10ms
-		List<Integer>[] bucket = new ArrayList[nums.length+1];
+		List<Integer>[] bucket = new ArrayList[nums.length + 1];
 		HashMap<Integer, Integer> map = new HashMap<>();
-		for (int num: nums)
+		for (int num : nums)
 			map.put(num, map.getOrDefault(num, 0) + 1);
-		for (Map.Entry<Integer, Integer> entry: map.entrySet()) {
-			if (bucket[entry.getValue()]==null)
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			if (bucket[entry.getValue()] == null)
 				bucket[entry.getValue()] = new ArrayList<>();
 			bucket[entry.getValue()].add(entry.getKey());
 		}
 		List<Integer> res = new ArrayList<>();
-		for (int i = nums.length; i > 0 && k > 0; i--){
-			if (bucket[i]!=null){
+		for (int i = nums.length; i > 0 && k > 0; i--) {
+			if (bucket[i] != null) {
 				res.addAll(bucket[i]);
-				k-=bucket[i].size();
+				k -= bucket[i].size();
 			}
 		}
 		return res;
+	}
 
-		// Hashmap, sort by value - 14ms
-//		HashMap<Integer, Integer> map = new HashMap<>();
-//		for (int num: nums)
-//			map.put(num, map.getOrDefault(num, 0) + 1);
-//		List<Map.Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
-//		Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>(){
-//			public int compare(Map.Entry<Integer, Integer> entry1,
-//							   Map.Entry<Integer, Integer> entry2){
-//				return entry2.getValue().compareTo(entry1.getValue());
-//			}
-//		});
-//		list = list.subList(0, k);
-//		List<Integer> res = new ArrayList<>();
-//		for (Map.Entry<Integer, Integer> entry: list){
-//			res.add(entry.getKey());
+	// Hashmap, sort by value - 14ms
+//	public List<Integer> topKFrequent(int[] nums, int k) {
+//		HashMap<Integer, Integer> intCnt = new HashMap<>();
+//		for (int num: nums) {
+//			intCnt.put(num, intCnt.getOrDefault(num, 0)+1);
+//		}
+//		ArrayList<Integer> lis = new ArrayList<>(intCnt.keySet());
+//		ArrayList<Integer> res = new ArrayList<>();
+//		Collections.sort(lis, (a, b) -> (intCnt.get(b) - intCnt.get(a)));
+//		for (int i = 0; i < k; i++) {
+//			res.add(lis.get(i));
 //		}
 //		return res;
+//	}
 
-		// Heap - O(nlogn) 42ms
+	// Heap - O(nlogn) 14ms
+//	public List<Integer> topKFrequent(int[] nums, int k) {
 //		HashMap<Integer, Integer> map = new HashMap<>();
 //		for (int num: nums)
 //			map.put(num, map.getOrDefault(num, 0) + 1);
@@ -57,8 +56,10 @@ public class TopKFrequentElements_347 {
 //		for (int i = 0; i < k; i++)
 //			res.add(maxHeap.poll());
 //		return res;
+//	}
 
-		// Treemap - 12ms
+	// Treemap - 12ms
+//	public List<Integer> topKFrequent(int[] nums, int k) {
 //		HashMap<Integer, Integer> hashmap = new HashMap<>();
 //		TreeMap<Integer, List<Integer>> treemap = new TreeMap<>();
 //		for (int num: nums)
@@ -76,5 +77,5 @@ public class TopKFrequentElements_347 {
 //			k -= entry.size();
 //		}
 //		return res;
-	}
+//	}
 }
