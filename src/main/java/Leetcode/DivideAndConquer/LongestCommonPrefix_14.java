@@ -1,4 +1,4 @@
-package Leetcode.DivideandConquer;
+package Leetcode.DivideAndConquer;
 
 public class LongestCommonPrefix_14 {
     // O(mn) 1ms

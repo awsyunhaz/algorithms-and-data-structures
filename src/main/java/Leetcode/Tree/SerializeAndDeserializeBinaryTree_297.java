@@ -1,8 +1,6 @@
 package Leetcode.Tree;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class SerializeAndDeserializeBinaryTree_297 {
     /**
@@ -15,41 +13,92 @@ public class SerializeAndDeserializeBinaryTree_297 {
         TreeNode(int x) { val = x; }
     }
 
+    // Recursive DFS, preorder traversal
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         StringBuffer sb = new StringBuffer();
-        traverse(root, sb);
+        traverse(sb, root);
         return sb.toString();
     }
 
-    private void traverse(TreeNode root, StringBuffer sb) {
+    public void traverse(StringBuffer sb, TreeNode root) {
         if (root == null) {
             sb.append('.');
-            return;
+        } else {
+            sb.append(root.val);
         }
-        sb.append(root.val);
         sb.append(',');
-        traverse(root.left, sb);
-        sb.append(',');
-        traverse(root.right, sb);
+        if (root != null) {
+            traverse(sb, root.left);
+            traverse(sb, root.right);
+        }
     }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        List<String> lis = new ArrayList();
-        lis.addAll(Arrays.asList(data.split(",")));
-        return buildTree(lis);
+        String[] arr = data.split(",");
+        ArrayDeque<String> queue = new ArrayDeque<>(Arrays.asList(arr));
+        return buildTree(queue);
     }
 
-    private TreeNode buildTree(List<String> lis) {
-        String str = lis.remove(0);
-        if (str.equals(".")) {
+    public TreeNode buildTree(ArrayDeque<String> queue) {
+        if (queue.peek().equals(".")) {
+            queue.poll();
             return null;
+        } else {
+            TreeNode node = new TreeNode(Integer.parseInt(queue.peek()));
+            queue.poll();
+            node.left = buildTree(queue);
+            node.right = buildTree(queue);
+            return node;
         }
-        int val = Integer.parseInt(str);
-        TreeNode parent = new TreeNode(val);
-        parent.left = buildTree(lis);
-        parent.right = buildTree(lis);
-        return parent;
     }
+
+    // Iterative BFS, level-order traversal
+//    // Encodes a tree to a single string.
+//    public String serialize(TreeNode root) {
+//        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+//        StringBuffer sb = new StringBuffer();
+//        queue.offer(root);
+//        while (!queue.isEmpty()) {
+//            TreeNode node = queue.poll();
+//            if (node == null) {
+//                sb.append('.');
+//            } else {
+//                sb.append(node.val);
+//            }
+//            sb.append(',');
+//            if (node != null) {
+//                queue.offer(node.left);
+//                queue.offer(node.right);
+//            }
+//        }
+//        return sb.toString();
+//    }
+//
+//    // Decodes your encoded data to tree.
+//    public TreeNode deserialize(String data) {
+//        // ArrayDeque cannot add null element
+//        Queue<TreeNode> queue = new LinkedList<>();
+//        String[] arr = data.split(",");
+//        if (arr[0].equals(".")) {
+//            return null;
+//        }
+//        TreeNode root = new TreeNode(Integer.parseInt(arr[0]));
+//        queue.offer(root);
+//        int i = 1;
+//        while (!queue.isEmpty()) {
+//            TreeNode node = queue.poll();
+//            if (!arr[i].equals(".")) {
+//                node.left = new TreeNode(Integer.parseInt(arr[i]));
+//                queue.offer(node.left);
+//            }
+//            if (!arr[i+1].equals(".")) {
+//                node.right = new TreeNode(Integer.parseInt(arr[i+1]));
+//                queue.offer(node.right);
+//            }
+//            i += 2;
+//        }
+//        return root;
+//    }
 }

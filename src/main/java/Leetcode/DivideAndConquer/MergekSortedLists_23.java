@@ -1,4 +1,4 @@
-package Leetcode.DivideandConquer;
+package Leetcode.DivideAndConquer;
 
 public class MergekSortedLists_23 {
     public class ListNode {
