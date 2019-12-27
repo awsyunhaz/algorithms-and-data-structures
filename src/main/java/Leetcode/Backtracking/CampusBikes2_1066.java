@@ -1,4 +1,4 @@
-package Leetcode.DepthFirstSearch;
+package Leetcode.Backtracking;
 
 public class CampusBikes2_1066 {
     // DFS + pruning

@@ -1,4 +1,4 @@
-package Leetcode.DepthFirstSearch;
+package Leetcode.Backtracking;
 
 public class NQueens2_52 {
     private int res = 0;

@@ -1,4 +1,4 @@
-package Leetcode.Backtrack;
+package Leetcode.Backtracking;
 
 public class ConfusingNumber2_1088 {
     private int counter;

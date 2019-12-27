@@ -1,4 +1,4 @@
-package Leetcode.DepthFirstSearch;
+package Leetcode.Backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class LetterCombinationsofPhoneNumber_17 {
 //        return helper(res, digits.substring(1, digits.length()));
 //    }
 
-    // Search - 0ms
+    // Backtrack - 0ms
     public List<String> letterCombinations(String digits) {
         List<String> res = new ArrayList<>();
         if (digits.length()==0) return res;

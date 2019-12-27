@@ -1,7 +1,6 @@
-package Leetcode.DepthFirstSearch;
+package Leetcode.Backtracking;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Subsets_78 {

@@ -1,4 +1,4 @@
-package Leetcode.DepthFirstSearch;
+package Leetcode.Backtracking;
 
 public class WordSearch_79 {
     // DFS - 125ms
