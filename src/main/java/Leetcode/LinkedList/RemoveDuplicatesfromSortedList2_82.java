@@ -7,8 +7,8 @@ public class RemoveDuplicatesfromSortedList2_82 {
         ListNode(int x) { val = x; }
     }
 
-    public ListNode deleteDuplicates(ListNode head){
-        // Straightforward - 0ms
+    // Straightforward - 0ms
+//    public ListNode deleteDuplicates(ListNode head) {
 //        if (head==null)
 //            return head;
 //        ListNode dummy = new ListNode(0);
@@ -25,8 +25,10 @@ public class RemoveDuplicatesfromSortedList2_82 {
 //                slow.next = fast.next;
 //        }
 //        return resNode.next;
+//    }
 
-        // Recursion
+    // Recursion
+    public ListNode deleteDuplicates(ListNode head){
         if (head==null)
             return head;
         if (head.next!=null && head.val==head.next.val) {

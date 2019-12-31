@@ -1,4 +1,4 @@
-package Leetcode.DepthFirstSearch;
+package Leetcode.Graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
