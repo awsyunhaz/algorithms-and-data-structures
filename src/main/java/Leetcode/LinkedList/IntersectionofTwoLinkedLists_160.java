@@ -19,12 +19,12 @@ public class IntersectionofTwoLinkedLists_160 {
             nodeB = nodeB.next;
             sizeB++;
         }
-        nodeA=headA; nodeB=headB;
+        nodeA=headA;
+        nodeB=headB;
         if (sizeA>sizeB){
             for (int i=0; i<sizeA-sizeB; i++)
                 nodeA = nodeA.next;
-        }
-        else{
+        } else{
             for (int i=0; i<sizeB-sizeA; i++)
                 nodeB = nodeB.next;
         }

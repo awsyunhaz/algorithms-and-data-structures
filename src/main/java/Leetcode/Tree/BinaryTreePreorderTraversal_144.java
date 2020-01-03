@@ -17,19 +17,18 @@ public class BinaryTreePreorderTraversal_144 {
         }
     }
 
-    public List<Integer> preOrderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
-        traverse(root, result);
-        return result;
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        traverse(root, res);
+        return res;
     }
 
-    private void traverse(TreeNode root, List<Integer> result) {
-        if (root != null) {
-            result.add(root.val);
-            if (root.left != null)
-                traverse(root.left, result);
-            if (root.right != null)
-                traverse(root.right, result);
+    public void traverse(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
         }
+        res.add(root.val);
+        traverse(root.left, res);
+        traverse(root.right, res);
     }
 }
