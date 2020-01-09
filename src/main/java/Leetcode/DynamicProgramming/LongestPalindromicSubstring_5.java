@@ -22,22 +22,22 @@ public class LongestPalindromicSubstring_5 {
 
     // Extend around center
     // Time: O(n^2), space: constant
-    private String res="";
-
     public String longestPalindrome(String s) {
-        for (int i = 0; i < s.length(); i++){
-            extend(s, i, i);
-            extend(s, i, i+1);
+        String res = "";
+        for (int i = 0; i < s.length(); i++) {
+            String str1 = extend(s, i, i);
+            String str2 = extend(s, i, i+1);
+            String str = str1.length() >= str2.length()? str1: str2;
+            res = str.length() > res.length()? str: res;
         }
         return res;
     }
 
-    public void extend(String s, int i, int j){
-        while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)){
-            i--; j++;
+    public String extend(String s, int i, int j) {
+        while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
+            i --;
+            j ++;
         }
-        if (j - i - 1 > res.length()){
-            res = s.substring(i+1, j);
-        }
+        return s.substring(i+1, j);
     }
 }
