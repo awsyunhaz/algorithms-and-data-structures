@@ -18,38 +18,6 @@ public class KClosestPointsToOrigin_973 {
 //        return res;
 //    }
 
-    // Quick select
-//    public int[][] kClosest(int[][] points, int K) {
-//        int lo = 0, hi = points.length-1, mid = -1;
-//        while (mid != K-1) {
-//            mid = partition(points, lo, hi);
-//            if (mid < K) {
-//                lo = mid + 1;
-//            } else {
-//                hi = mid - 1;
-//            }
-//        }
-//        return Arrays.copyOfRange(points, 0, K);
-//    }
-//
-//    public int partition(int[][] points, int lo, int hi) {
-//        int[] pivot = points[lo];
-//        while (lo < hi) {
-//            while (lo < hi && dist(points[hi]) >= dist(pivot))
-//                hi --;
-//            points[lo] = points[hi];
-//            while (lo < hi && dist(points[lo]) < dist(pivot))
-//                lo ++;
-//            points[hi] = points[lo];
-//        }
-//        points[lo] = pivot;
-//        return lo;
-//    }
-//
-//    public int dist(int[] p) {
-//        return p[0] * p[0] + p[1] * p[1];
-//    }
-
     // Quick select - implementation like quick sort
     public int[][] kClosest(int[][] points, int K) {
         quickselect(points, K, 0, points.length-1);
@@ -82,4 +50,37 @@ public class KClosestPointsToOrigin_973 {
     public int dis(int[] point) {
         return point[0]*point[0] + point[1]*point[1];
     }
+
+
+    // Quick select, another implementation
+//    public int[][] kClosest(int[][] points, int K) {
+//        int lo = 0, hi = points.length-1, mid = -1;
+//        while (mid != K-1) {
+//            mid = partition(points, lo, hi);
+//            if (mid < K) {
+//                lo = mid + 1;
+//            } else {
+//                hi = mid - 1;
+//            }
+//        }
+//        return Arrays.copyOfRange(points, 0, K);
+//    }
+//
+//    public int partition(int[][] points, int lo, int hi) {
+//        int[] pivot = points[lo];
+//        while (lo < hi) {
+//            while (lo < hi && dist(points[hi]) >= dist(pivot))
+//                hi --;
+//            points[lo] = points[hi];
+//            while (lo < hi && dist(points[lo]) < dist(pivot))
+//                lo ++;
+//            points[hi] = points[lo];
+//        }
+//        points[lo] = pivot;
+//        return lo;
+//    }
+//
+//    public int dist(int[] p) {
+//        return p[0] * p[0] + p[1] * p[1];
+//    }
 }

@@ -20,15 +20,19 @@ public class ValidateBinarySearchTree_98 {
 
     // Use Integer object
     public boolean isValidBST(TreeNode root) {
-        return valid(root, null, null);
+        return traverse(root, null, null);
     }
 
-    public boolean valid(TreeNode root, Integer lowerbound, Integer upperbound){
-        if (root == null) return true;
-        if ((lowerbound != null && root.val <= lowerbound) ||
-                (upperbound != null && root.val >= upperbound) ||
-                !valid(root.left, lowerbound, root.val) || !valid (root.right, root.val, upperbound))
+    public boolean traverse(TreeNode root, Integer lowBound, Integer highBound) {
+        if (root == null) {
+            return true;
+        }
+        if (lowBound != null && root.val <= lowBound) {
             return false;
-        return true;
+        }
+        if (highBound != null && root.val >= highBound) {
+            return false;
+        }
+        return traverse(root.left, lowBound, root.val) && traverse(root.right, root.val, highBound);
     }
 }

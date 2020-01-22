@@ -4,6 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ZigZagConversion_6 {
+//    public String convert(String s, int numRows) {
+//        if (numRows == 1) {
+//            return s;
+//        }
+//        StringBuffer sb = new StringBuffer();
+//        // length of a V
+//        int len = (numRows-1)*2;
+//        for (int i = 0; i < numRows; i++) {
+//            int interval = 2*i;
+//            if (i == 0 || i == numRows-1) {
+//                interval = len;
+//            }
+//            for (int j = i; j < s.length(); j += interval) {
+//                sb.append(s.charAt(j));
+//                if (i > 0 && i < numRows-1) {
+//                    interval = len - interval;
+//                }
+//            }
+//        }
+//        return sb.toString();
+//    }
+
     // List of StringBuffer - 15ms
     public String convert (String s,int numRows){
         if (numRows == 1) return s;

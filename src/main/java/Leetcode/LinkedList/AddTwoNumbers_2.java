@@ -45,19 +45,18 @@ public class AddTwoNumbers_2 {
 //            return null;
 //        }
 //        int v1 = 0, v2 = 0;
-//        ListNode n1 = l1, n2 = l2;
 //        if (l1 != null) {
 //            v1 = l1.val;
-//            n1 = l1.next;
+//            l1 = l1.next;
 //        }
 //        if (l2 != null) {
 //            v2 = l2.val;
-//            n2 = l2.next;
+//            l2 = l2.next;
 //        }
 //        int val = v1 + v2 + c;
 //        ListNode node = new ListNode(val % 10);
 //        c = val / 10;
-//        node.next = add(n1, n2, c);
+//        node.next = add(l1, l2, c);
 //        return node;
 //    }
 }

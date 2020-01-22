@@ -18,9 +18,11 @@ public class BinaryTreeZigzagLevelOrderTraversal_103 {
     }
 
     private void traverse(List<List<Integer>> res, TreeNode root, int level){
-        if (root==null) return;
-        if (level>=res.size()) res.add(new ArrayList<Integer>());
-        if (level%2==0)
+        if (root == null)
+            return;
+        if (level == res.size())
+            res.add(new ArrayList<>());
+        if (level%2 == 0)
             res.get(level).add(root.val);
         else
             res.get(level).add(0, root.val);
