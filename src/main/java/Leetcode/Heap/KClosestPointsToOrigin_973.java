@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 
 public class KClosestPointsToOrigin_973 {
 
-    // Priority Queue - Nlog(k)
+    // Priority Queue - Nlog(k), 54ms
 //    public int[][] kClosest(int[][] points, int K) {
 //        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[0]*a[0] + a[1]*a[1] - b[0]*b[0] - b[1]*b[1]));
 //        int[][] res = new int[K][2];

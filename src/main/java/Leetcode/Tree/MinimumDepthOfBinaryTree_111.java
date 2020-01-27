@@ -12,15 +12,15 @@ public class MinimumDepthOfBinaryTree_111 {
         if (root == null) {
             return 0;
         }
-        return findMin(root, 1);
+        return findMin(root);
     }
 
-    public int findMin(TreeNode root, int level) {
+    public int findMin(TreeNode root) {
         if (root.left == null && root.right == null) {
-            return level;
+            return 1;
         }
-        int leftDepth = root.left == null? Integer.MAX_VALUE: findMin(root.left, level+1);
-        int rightDepth = root.right == null? Integer.MAX_VALUE: findMin(root.right, level+1);
-        return Math.min(leftDepth, rightDepth);
+        int leftDepth = root.left == null? Integer.MAX_VALUE: findMin(root.left);
+        int rightDepth = root.right == null? Integer.MAX_VALUE: findMin(root.right);
+        return Math.min(leftDepth, rightDepth) + 1;
     }
 }

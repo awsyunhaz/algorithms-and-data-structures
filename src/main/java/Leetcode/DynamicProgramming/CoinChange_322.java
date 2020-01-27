@@ -22,6 +22,7 @@ public class CoinChange_322 {
 //        return res[amount];
 //    }
 
+    // O(kn)
     public int coinChange(int[] coins, int amount) {
         int[] res = new int[amount+1];
         // Initialize state to maximum

@@ -11,18 +11,22 @@ public class SymmetricTree_101 {
         TreeNode(int x) { val = x; }
     }
 
-    // Recursive method - 1ms
+    // Recursive method - 0ms
     public boolean isSymmetric(TreeNode root) {
-        if (root==null)
+        if (root == null) {
             return true;
-        return isEqual(root.left, root.right);
+        }
+        return isSymmetricSubtree(root.left, root.right);
     }
 
-    private boolean isEqual(TreeNode l, TreeNode r){
-        if (l==null && r==null) return true;
-        if (l==null || r==null) return false;
-        if (l.val != r.val) return false;
-        return isEqual(l.left, r.right) && isEqual(l.right, r.left);
+    public boolean isSymmetricSubtree(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left != null && right != null) {
+            return left.val == right.val && isSymmetricSubtree(left.left, right.right) && isSymmetricSubtree(left.right, right.left);
+        }
+        return false;
     }
 
     // Iterative method - 2ms

@@ -3,9 +3,9 @@ package Leetcode.HashMap;
 import java.util.*;
 
 public class LongestSubstringWithoutRepeatingCharacters_3 {
-    public int lengthOfLongestSubstring(String s) {
-        // ArrayList
-        // O(n^2) - 20ms
+    // ArrayList
+    // O(n^2) - 20ms
+//    public int lengthOfLongestSubstring(String s) {
 //        List<Character> list = new ArrayList<>();
 //        int max = 0;
 //        for (int i = 0; i < s.length(); i++){
@@ -36,17 +36,19 @@ public class LongestSubstringWithoutRepeatingCharacters_3 {
 //        }
 //        return max;
 
-        // Hash table
-        // O(n), n step most - 21ms
+    // Hash table
+    // O(n), n step most - 21ms
+    public int lengthOfLongestSubstring(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
-        int max = 0, i = 0, j = 0;
-        while (j < s.length()){
-            if (map.containsKey(s.charAt(j)))
-                i = Math.max(i, map.get(s.charAt(j)) + 1);
-            map.put(s.charAt(j), j++);
-            max = Math.max(max, j-i);
+        int left = 0, res = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
+            }
+            map.put(s.charAt(i), i);
+            res = Math.max(res, i-left+1);
         }
-        return max;
+        return res;
     }
 
     public static void main(String[] args){

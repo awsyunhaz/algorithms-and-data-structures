@@ -3,25 +3,24 @@ package Leetcode.Design;
 import java.util.HashMap;
 
 public class LFUCache_460 {
-    public class DLinkedNode {
-        public int key, value, cnt;
-        public DLinkedNode prev, next;
 
-        public DLinkedNode() { }
+    public class DLinkedNode {
+        DLinkedNode prev, next;
+        int key, value, freq;
 
         public DLinkedNode(int key, int value) {
             this.key = key;
             this.value = value;
-            cnt = 0;
+            freq = 1;
         }
     }
 
     public class DLinkedList {
-        public DLinkedNode head, tail;
+        DLinkedNode head, tail;
 
         public DLinkedList() {
-            head = new DLinkedNode();
-            tail = new DLinkedNode();
+            head = new DLinkedNode(0, 0);
+            tail = new DLinkedNode(0, 0);
             head.next = tail;
             tail.prev = head;
         }
@@ -34,8 +33,8 @@ public class LFUCache_460 {
         public void addToTail(DLinkedNode node) {
             tail.prev.next = node;
             node.prev = tail.prev;
-            node.next = tail;
             tail.prev = node;
+            node.next = tail;
         }
 
         public boolean isEmpty() {
@@ -43,63 +42,70 @@ public class LFUCache_460 {
         }
     }
 
-    HashMap<Integer, DLinkedNode> nodeMap; // key -> value
-    HashMap<Integer, DLinkedList> cntMap; // frequency -> doubly linked list
-    int cap, minCnt;
+    private HashMap<Integer, DLinkedNode> nodeMap; // key -> node
+    private HashMap<Integer, DLinkedList> listMap; // frequency -> doubly linked list
+    private int capacity, minFreq;
 
     public LFUCache_460(int capacity) {
+        this.capacity = capacity;
         nodeMap = new HashMap<>();
-        cntMap = new HashMap<>();
-        cntMap.put(0, new DLinkedList());
-        cap = capacity;
-        minCnt = 0;
+        listMap = new HashMap<>();
+        minFreq = 0;
     }
 
     public int get(int key) {
-        if (!nodeMap.containsKey(key)) {
+        if (nodeMap.containsKey(key)) {
+            DLinkedNode node = nodeMap.get(key);
+            updateList(node);
+            return node.value;
+        } else {
             return -1;
         }
-        DLinkedNode node = nodeMap.get(key);
-        updateCntMap(node);
-        return node.value;
     }
 
     public void put(int key, int value) {
-        if (cap <= 0) {
+        if (capacity <= 0) {
             return;
         }
         if (nodeMap.containsKey(key)) {
             DLinkedNode node = nodeMap.get(key);
             node.value = value;
-            updateCntMap(node);
+            updateList(node);
         } else {
-            // Reach max capacity: remove first node in the minCnt list
-            if (nodeMap.size() == cap) {
-                DLinkedList list = cntMap.get(minCnt);
-                DLinkedNode node = list.head.next;
-                list.remove(node);
-                nodeMap.remove(node.key);
+            // Reach max capacity: remove first node in the minFreq list
+            if (nodeMap.size() == capacity) {
+                DLinkedList minList = listMap.get(minFreq);
+                nodeMap.remove(minList.head.next.key);
+                minList.remove(minList.head.next);
+                if (minList.isEmpty()) {
+                    listMap.remove(minFreq);
+                }
             }
-            // Add a new node to the list with 0 frequency
+            minFreq = 1;
+            if (!listMap.containsKey(1)) {
+                listMap.put(1, new DLinkedList());
+            }
             DLinkedNode node = new DLinkedNode(key, value);
             nodeMap.put(key, node);
-            cntMap.get(0).addToTail(node);
-            minCnt = 0;
+            listMap.get(1).addToTail(node);
         }
     }
 
-    // increment node frequency and add it to the tail of corresponding list in cntMap
-    public void updateCntMap(DLinkedNode node) {
-        DLinkedList list = cntMap.get(node.cnt);
+    // Increment node frequency and add it to the tail of corresponding list in cntMap
+    public void updateList(DLinkedNode node) {
+        DLinkedList list = listMap.get(node.freq);
         list.remove(node);
-        // increment minCnt if minCnt list become empty
-        if (node.cnt == minCnt && list.isEmpty()) {
-            minCnt++;
+        if (list.isEmpty()) {
+            listMap.remove(node.freq);
+            // increment minFreq if minFreq list become empty
+            if (node.freq == minFreq) {
+                minFreq ++;
+            }
         }
-        node.cnt ++;
-        if (!cntMap.containsKey(node.cnt)) {
-            cntMap.put(node.cnt, new DLinkedList());
+        node.freq++;
+        if (!listMap.containsKey(node.freq)) {
+            listMap.put(node.freq, new DLinkedList());
         }
-        cntMap.get(node.cnt).addToTail(node);
+        listMap.get(node.freq).addToTail(node);
     }
 }

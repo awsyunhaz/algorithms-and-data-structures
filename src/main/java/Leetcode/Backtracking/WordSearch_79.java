@@ -3,63 +3,73 @@ package Leetcode.Backtracking;
 public class WordSearch_79 {
     // DFS - 125ms
 //    public boolean exist(char[][] board, String word) {
-//        if (board == null || board.length == 0) return false;
+//        if (word.length() == 0) {
+//            return true;
+//        }
+//        if (board.length == 0 || board[0].length == 0) {
+//            return false;
+//        }
 //        int m = board.length, n = board[0].length;
-//        for (int i = 0; i < m; i++){
-//            for (int j = 0; j < n; j++){
-//                boolean[][] used = new boolean[m][n];
-//                if (search(board, used, word, 0, i, j))
+//        for (int i = 0; i < m; i++) {
+//            for (int j = 0; j < n; j++) {
+//                boolean[][] visited = new boolean[m][n];
+//                visited[i][j] = true;
+//                if (dfs(board, i, j, word, 0, visited)) {
 //                    return true;
+//                }
 //            }
 //        }
 //        return false;
 //    }
 //
-//    public boolean search(char[][] board, boolean[][] used, String word, int pos, int i, int j){
-//        if (pos == word.length())  return true;
-//        int m = board.length, n = board[0].length;
-//        if (i < 0 || j < 0 || i == m || j == n
-//                || used[i][j] || board[i][j] != word.charAt(pos)) return false;
-//        used[i][j] = true;
-//        if (search(board, used, word, pos+1, i-1, j)
-//                || search(board, used, word, pos+1, i+1, j)
-//                || search(board, used, word, pos+1, i, j-1)
-//                || search(board, used, word, pos+1, i, j+1))
-//            return true;
-//        else{
-//            used[i][j] = false;
+//    public boolean dfs(char[][] board, int i, int j, String word, int index, boolean[][] visited) {
+//        if (board[i][j] != word.charAt(index)) {
 //            return false;
+//        } else if (index == word.length()-1) {
+//            return true;
 //        }
+//        int[][] dirs = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+//        for (int[] dir: dirs) {
+//            int row = i + dir[0], col = j + dir[1];
+//            if (row >= 0 && row < board.length && col >= 0 && col < board[0].length && !visited[row][col]) {
+//                visited[row][col] = true;
+//                if (dfs(board, row, col, word, index+1, visited)) {
+//                    return true;
+//                }
+//                visited[row][col] = false;
+//            }
+//        }
+//        return false;
 //    }
 
-    //Modified DFS - 3ms
+    //Modified DFS - 5ms
+    private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
     public boolean exist(char[][] board, String word) {
-        if (board == null || board.length == 0) return false;
-        int m = board.length, n = board[0].length;
-        for (int i = 0; i < m; i++){
-            for (int j = 0; j < n; j++){
-                if (search(board, word, 0, i, j))
+        int n_row = board.length, n_col = board[0].length;
+        for (int i = 0; i < n_row; i++){
+            for (int j = 0; j < n_col; j++){
+                if (search(board, word, i, j, 0))
                     return true;
             }
         }
         return false;
     }
 
-    public boolean search(char[][] board, String word, int pos, int i, int j){
-        if (pos == word.length())  return true;
-        int m = board.length, n = board[0].length;
-        if (i < 0 || j < 0 || i == m || j == n
-                || board[i][j] != word.charAt(pos)) return false;
-        char c = board[i][j];
-        board[i][j] = ' ';
-        if (search(board, word, pos+1, i-1, j)
-                || search(board, word, pos+1, i+1, j)
-                || search(board, word, pos+1, i, j-1)
-                || search(board, word, pos+1, i, j+1))
+    public boolean search(char[][] board, String word, int i, int j, int start){
+        if (start == word.length())
             return true;
-        else{
-            board[i][j] = c;
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(start))
             return false;
+        char c = board[i][j];
+        // switch character to space to avoid visiting again
+        board[i][j] = ' ';
+        for (int[] dir: dirs){
+            int row = i + dir[0], col = j + dir[1];
+            if (search(board, word, row, col, start+1))
+                return true;
         }
+        board[i][j] = c;
+        return false;
     }
 }

@@ -3,6 +3,7 @@ package Leetcode.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class mergeIntervals_56 {
     public int[][] merge(int[][] intervals) {
@@ -24,4 +25,35 @@ public class mergeIntervals_56 {
         res.add(currInterval);
         return res.toArray(new int[res.size()][2]);
     }
+
+    // Priority Queue - 5ms
+//    public int[][] merge(int[][] intervals) {
+//        if (intervals.length == 0) {
+//            return new int[][]{};
+//        }
+//        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[0] - b[0]));
+//        for (int[] interval: intervals) {
+//            pq.offer(interval);
+//        }
+//        List<int[]> lis = new ArrayList<>();
+//        int[] interval = pq.poll();
+//        int start = interval[0], end = interval[1];
+//        while (!pq.isEmpty()) {
+//            interval = pq.poll();
+//            if (interval[0] > end) {
+//                lis.add(new int[]{start, end});
+//                start = interval[0];
+//            }
+//            if (interval[1] > end) {
+//                end = interval[1];
+//            }
+//        }
+//        lis.add(new int[]{start, end});
+//
+//        int[][] res = new int[lis.size()][2];
+//        for (int i = 0; i < res.length; i++) {
+//            res[i] = lis.get(i);
+//        }
+//        return res;
+//    }
 }
