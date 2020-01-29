@@ -47,6 +47,7 @@ public class LargestRectangleInHistogram_84 {
                 stack.push(i++);
             } else {
                 int bar = stack.pop();
+                // Consider index as the left edge of rectangle
                 int left = stack.isEmpty()? 0: stack.peek()+1;
                 maxArea = Math.max(maxArea, heights[bar]*(i-left));
             }

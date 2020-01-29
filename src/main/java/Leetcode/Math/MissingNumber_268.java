@@ -24,10 +24,10 @@ public class MissingNumber_268 {
 //        return 0;
 
         //Math - 0ms
-        int sum = nums.length*(nums.length+1)/2;
+        int sum = nums.length*(nums.length + 1) / 2;
         int realsum = 0;
         for (int num: nums)
-            realsum+=num;
-        return sum-realsum;
+            realsum += num;
+        return sum - realsum;
     }
 }

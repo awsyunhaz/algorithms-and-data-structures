@@ -7,22 +7,24 @@ public class RemoveLinkedListElements_203 {
         ListNode(int x) { val = x; }
     }
 
+    // Iteration
     public ListNode removeElements(ListNode head, int val) {
-        // 3ms
         ListNode dummy = new ListNode(0);
-        ListNode prev = dummy;
         dummy.next = head;
-        while (head!=null){
-            if (head.val!=val){
-                prev.next = head;
+        ListNode prev = dummy;
+        while (head != null) {
+            if (head.val == val) {
+                prev.next = head.next;
+            } else {
                 prev = prev.next;
             }
             head = head.next;
         }
-        prev.next = null;
         return dummy.next;
+    }
 
-        // Recursion
+    // Recursion
+//    public ListNode removeElements(ListNode head, int val) {
 //        if (head==null)
 //            return head;
 //        if (head.val==val)
@@ -31,5 +33,5 @@ public class RemoveLinkedListElements_203 {
 //            head.next = removeElements(head.next, val);
 //            return head;
 //        }
-    }
+//    }
 }

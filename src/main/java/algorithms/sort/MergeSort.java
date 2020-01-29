@@ -19,11 +19,11 @@ public class MergeSort {
 	}
 	
 	public static void sort(int[] a,int low,int high){
-		int mid = (low+high)/2;
 		if (low < high){
-			sort(a,low,mid);
-			sort(a,mid+1,high);
-			merge(a,low,mid,high);
+			int mid = (low + high) / 2;
+			sort(a, low, mid);
+			sort(a,mid+1, high);
+			merge(a, low, mid, high);
 		}
 	}
 	

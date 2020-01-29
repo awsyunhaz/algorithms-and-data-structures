@@ -24,33 +24,34 @@ public class PopulateNextRightPointersInEachNode2_117 {
 
     public Node connect(Node root) {
         Node node = root;
-        Node headNextLevel = null;
-        Node currNextLevel = null;
+        Node nextHead = null;
+        Node lastNode = null;
         while (node != null) {
             if (node.left != null) {
-                if (headNextLevel == null) {
-                    headNextLevel = node.left;
-                } else {
-                    currNextLevel.next = node.left;
+                if (nextHead == null) {
+                    nextHead = node.left;
                 }
-                currNextLevel = node.left;
+                if (lastNode != null) {
+                    lastNode.next = node.left;
+                }
+                lastNode = node.left;
             }
-
             if (node.right != null) {
-                if (headNextLevel == null) {
-                    headNextLevel = node.right;
-                } else {
-                    currNextLevel.next = node.right;
+                if (nextHead == null) {
+                    nextHead = node.right;
                 }
-                currNextLevel = node.right;
+                if (lastNode != null) {
+                    lastNode.next = node.right;
+                }
+                lastNode = node.right;
             }
+            node = node.next;
 
             // Go to next level
-            node = node.next;
             if (node == null) {
-                node = headNextLevel;
-                headNextLevel = null;
-                currNextLevel = null;
+                node = nextHead;
+                nextHead = null;
+                lastNode = null;
             }
         }
         return root;
