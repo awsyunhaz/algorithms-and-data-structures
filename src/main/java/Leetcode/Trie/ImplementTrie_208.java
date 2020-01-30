@@ -15,8 +15,7 @@ public class ImplementTrie_208 {
 
     private TrieNode root;
     /** Initialize your data structure here. */
-//    public Trie() {
-    public void Trie() {
+    public ImplementTrie_208() {
         root = new TrieNode();
     }
 

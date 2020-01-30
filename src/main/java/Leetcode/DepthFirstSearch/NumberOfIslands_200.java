@@ -1,4 +1,4 @@
-package Leetcode.BreathFirstSearch;
+package Leetcode.DepthFirstSearch;
 
 import java.util.LinkedList;
 import java.util.Queue;

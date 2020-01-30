@@ -10,33 +10,34 @@ public class AddTwoNumbers2_445 {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-
         // Stack - 24ms
         Stack<ListNode> stack1 = new Stack<>(), stack2 = new Stack<>();
-        while (l1!=null) {
+        while (l1 != null) {
             stack1.push(l1);
             l1 = l1.next;
         }
-        while (l2!=null) {
+        while (l2 != null) {
             stack2.push(l2);
             l2 = l2.next;
         }
         ListNode prev = null;
         int carry = 0;
-        while (!stack1.empty() || !stack2.empty() || carry!=0){
+        while (!stack1.empty() || !stack2.empty() || carry != 0) {
             int num1 = 0, num2 = 0;
             if (!stack1.empty()) num1 = stack1.pop().val;
             if (!stack2.empty()) num2 = stack2.pop().val;
             int res = num1 + num2 + carry;
-            ListNode node = new ListNode(res%10);
+            ListNode node = new ListNode(res % 10);
             node.next = prev;
             prev = node;
-            carry = res/10;
+            carry = res / 10;
         }
         return prev;
+    }
 
-        // 22ms
-        // get length
+    // Recursive solution, 22ms
+//    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+//        // get length
 //        int size1 = 0, size2 = 0;
 //        ListNode node = l1;
 //        while (node!=null){
@@ -53,18 +54,17 @@ public class AddTwoNumbers2_445 {
 //        // Add an extra 0 to both linked lists to handle carry
 //        ListNode head = new ListNode(0);
 //        node = head;
-//        for (int i = 0; i < Math.abs(size1-size2); i++){
+//        for (int i = 0; i < Math.abs(size1-size2); i++) {
 //            node.next = new ListNode(0);
 //            node = node.next;
 //        }
-//        if (size1>size2){
+//        if (size1>size2) {
 //            node.next = l2;
 //            l2 = head;
 //            head = new ListNode(0);
 //            head.next = l1;
 //            l1 = head;
-//        }
-//        else{
+//        } else {
 //            node.next = l1;
 //            l1 = head;
 //            head = new ListNode(0);
@@ -89,5 +89,5 @@ public class AddTwoNumbers2_445 {
 //        }
 //        res.next = succ;
 //        return res;
-    }
+//    }
 }

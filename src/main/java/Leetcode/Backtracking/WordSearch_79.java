@@ -42,7 +42,7 @@ public class WordSearch_79 {
 //        return false;
 //    }
 
-    //Modified DFS - 5ms
+    // Modified DFS - 5ms
     private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
     public boolean exist(char[][] board, String word) {
