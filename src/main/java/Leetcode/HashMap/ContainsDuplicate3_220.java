@@ -1,24 +1,27 @@
 package Leetcode.HashMap;
 
 import java.util.HashMap;
+import java.util.TreeSet;
 
 public class ContainsDuplicate3_220 {
-    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        // TreeSet - O(nlogn) 15ms
+//    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
 //        TreeSet<Long> tree = new TreeSet<>();
-//        for (int i = 0; i < nums.length; i++){
-//            Long num = (long)nums[i];
-//            Long floor = tree.floor(num + t);
-//            if (floor!=null && floor>=num-t){
+//        for (int i = 0; i < nums.length; i++) {
+//            long num = nums[i];
+//            Long floor =  tree.floor(num + t);
+//            if (floor != null && floor >= num - t) {
 //                return true;
 //            }
 //            tree.add(num);
-//            if (i>=k)
-//                tree.remove((long)nums[i-k]);
+//            if (tree.size() > k) {
+//                tree.remove((long) nums[i-k]);
+//            }
 //        }
 //        return false;
+//    }
 
-        // Bucket - O(n) 9ms
+    // Bucket - O(n) 9ms
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if (k<0 || t<0)
             return false;
         HashMap<Long, Long> map = new HashMap<>();
