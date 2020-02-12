@@ -1,6 +1,6 @@
 # Algorithms & Data Structures
 
-Learn algorithms and data structures in java (keep updating).
+Keep learning algorithms and data structures (updating).
 
 ## Run a class without compiling the whole projects
 
@@ -16,9 +16,10 @@ Learn algorithms and data structures in java (keep updating).
 ### Online resources
 * [Leetcode](https://www.leetcode.com/)
 * [Lintcode](https://www.lintcode.com/)
-* [NowCoder(牛客网)](https://www.nowcoder.com/)
+* [NowCoder (牛客网)](https://www.nowcoder.com/)
 * [VisuAlgo](https://visualgo.net/en)
 ### Courses
-* [Princeton AlgorithmsI](https://www.coursera.org/learn/algorithms-part1)
+* [Princeton Algorithms I](https://www.coursera.org/learn/algorithms-part1)
 * [Berkeley CS61B](http://datastructur.es/sp17/)
 * [HKU ELEC2543](https://learning.hku.hk/catalog/course/elec2543/)
+* [Rice COMP582](https://courses.rice.edu/courses/!SWKSCAT.cat?p_action=COURSE&p_term=202010&p_crn=11204)
