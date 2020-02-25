@@ -5,19 +5,18 @@ import java.util.Arrays;
 public class ValidAnagram_242 {
     public boolean isAnagram(String s, String t) {
         // Array - 3ms
-        int[] cnt = new int[256];
-        Arrays.fill(cnt, 0);
+        int[] cnt = new int[26];
         for (char c: s.toCharArray())
-            cnt[c]++;
+            cnt[c] ++;
         for (char c: t.toCharArray())
-            cnt[c]--;
-        for (int i = 0; i < 256; i++){
-            if (cnt[i]!=0)
+            cnt[c] --;
+        for (int i = 0; i < 25; i++){
+            if (cnt[i] != 0)
                 return false;
         }
         return true;
 
-        //Hashset - 18ms
+        // Unicode: use Hashset - 18ms
 //        HashMap<Character, Integer> map = new HashMap<>();
 //        for (char c: s.toCharArray())
 //            map.put(c, map.getOrDefault(c, 0)+1);

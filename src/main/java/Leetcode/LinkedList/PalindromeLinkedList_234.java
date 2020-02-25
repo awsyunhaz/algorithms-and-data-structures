@@ -1,5 +1,7 @@
 package Leetcode.LinkedList;
 
+import java.util.Stack;
+
 public class PalindromeLinkedList_234 {
     public class ListNode {
         int val;
@@ -7,6 +9,33 @@ public class PalindromeLinkedList_234 {
         ListNode(int x) { val = x; }
     }
 
+    // Stack - O(n) space
+//    public boolean isPalindrome(ListNode head) {
+//        ListNode node = head;
+//        int len = 0;
+//        while (node != null) {
+//            node = node.next;
+//            len ++;
+//        }
+//        Stack<Integer> stack = new Stack<>();
+//        node = head;
+//        for (int i = 0; i < len/2; i++) {
+//            stack.push(node.val);
+//            node = node.next;
+//        }
+//        if (len % 2 == 1) {
+//            node = node.next;
+//        }
+//        for (int i = 0; i < len/2; i++) {
+//            if (node.val != stack.pop()) {
+//                return false;
+//            }
+//            node = node.next;
+//        }
+//        return true;
+//    }
+
+    // reverse the second half - O(1) space
     public boolean isPalindrome(ListNode head) {
         if (head==null)
             return true;
