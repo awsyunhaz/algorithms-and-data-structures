@@ -1,57 +1,53 @@
 package Leetcode.String;
 
 public class IsOneDistance_161 {
+
 //    public boolean isOneEditDistance(String s, String t) {
 //        int m = s.length(), n = t.length();
-//        if (Math.abs(m - n) >= 2) {
+//        // Make s shorter than t
+//        if (m > n) {
+//            return isOneEditDistance(t, s);
+//        }
+//        if (n - m >= 2) {
 //            return false;
 //        }
-//        int i = 0, j = 0;
-//        while (i < m && j < n && s.charAt(i) == t.charAt(j)){
+//        int i = 0;
+//        while (i < m && s.charAt(i) == t.charAt(i)){
 //            i ++;
-//            j ++;
 //        }
-//        if (m > n) {
-//            if (j == n) {
-//                return m - n == 1;
-//            }
-//            return s.substring(i+1, m).equals(t.substring(i, n));
-//        } else if (m < n) {
-//            if (i == m) {
-//                return n - m == 1;
-//            }
-//            return s.substring(i, m).equals(t.substring(i+1, n));
+//        if (i == m) {
+//            return n - m == 1;
 //        } else {
-//            if (i == m && j == n) {
-//                return false;
+//            if (m == n) {
+//                return s.substring(i+1, m).equals(t.substring(i+1, n));
 //            }
-//            return s.substring(i+1, m).equals(t.substring(i+1, n));
+//            else { // m + 1 == n
+//                return s.substring(i, m).equals(t.substring(i+1, n));
+//            }
 //        }
 //    }
 
-
+    // be careful to corner cases
     public boolean isOneEditDistance(String s, String t) {
-        int m = s.length(), n = t.length();
-        // Make s shorter than t
-        if (m > n) {
-            return isOneEditDistance(t, s);
-        }
-        if (n - m >= 2) {
+        int slen = s.length(), tlen = t.length();
+        if (Math.abs(slen - tlen) >= 2) {
             return false;
         }
-        int i = 0;
-        while (i < m && s.charAt(i) == t.charAt(i)){
+        int i = 0, j = 0;
+        while (i < slen && j < tlen && s.charAt(i) == t.charAt(j)) {
             i ++;
+            j ++;
         }
-        if (i == m) {
-            return n - m == 1;
+        if (i == slen || j == tlen) {
+            // slen == tlen: s and t are equal
+            return slen != tlen;
+        }
+        if (slen == tlen) {
+            return s.substring(i+1).equals(t.substring(j+1));
+        } else if (slen > tlen) {
+            return s.substring(i+1).equals(t.substring(j));
         } else {
-            if (m == n) {
-                return s.substring(i+1, m).equals(t.substring(i+1, n));
-            }
-            else { // m + 1 == n
-                return s.substring(i, m).equals(t.substring(i+1, n));
-            }
+            return s.substring(i).equals(t.substring(j+1));
         }
     }
 }

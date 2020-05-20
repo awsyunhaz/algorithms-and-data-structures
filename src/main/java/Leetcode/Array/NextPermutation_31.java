@@ -1,34 +1,64 @@
 package Leetcode.Array;
 
-//O(n)
-//本解针对于next permutation为不同排列的情况。如：115的下一个为151
-//第一次交换后lo后已经是倒序，直接reverse就可以
+import java.util.Arrays;
+
 public class NextPermutation_31 {
-    private void swap(int[] nums, int i, int j){
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
+//    public void nextPermutation(int[] nums) {
+//        if (nums.length == 0 || nums.length == 1) {
+//            return;
+//        }
+//        int i = nums.length - 2;
+//        while (i >= 0 && nums[i] >= nums[i+1]) i--;
+//
+//        // the array is in descending order
+//        if (i == -1) {
+//            Arrays.sort(nums);
+//            return;
+//        }
+//        // find the one just larger than nums[i]
+//        int j = nums.length-1;
+//        while (nums[j] <= nums[i]) j--;
+//
+//        // swap nums[i] and nums[j]
+//        int tmp = nums[i];
+//        nums[i] = nums[j];
+//        nums[j] = tmp;
+//
+//        // sort array behind pos i
+//        Arrays.sort(nums, i+1, nums.length);
+//    }
 
+    // O(n)
+    // 本解针对于next permutation为不同排列的情况。如：115的下一个为151，而非115
     public void nextPermutation(int[] nums) {
-        int lo=nums.length-1, hi=nums.length-1;
-        while (lo>0 && nums[lo-1]>=nums[lo]) lo--;
-        lo--;
-        if (lo>=0) {
-            while (hi > 0 && nums[hi] <= nums[lo]) hi--;
-            swap(nums, lo, hi);
+        if (nums.length == 0 || nums.length == 1) {
+            return;
         }
-        int head=lo+1, tail=nums.length-1;
-        while(head<tail){
-            swap(nums, head, tail);
-            head++; tail--;
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i] >= nums[i+1]) i--;
+        if (i == -1) {
+            reverse(nums, 0, nums.length-1);
+            return;
         }
-        for (int num: nums)
-            System.out.print(num);
+        int j = nums.length-1;
+        while (nums[j] <= nums[i]) j--;
+
+        // swap nums[i] and nums[j]
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+
+        // elements behind i+1 are in descending order -> reverse
+        reverse(nums, i+1, nums.length-1);
     }
 
-    public static void main(String[] args){
-        NextPermutation_31 obj = new NextPermutation_31();
-        obj.nextPermutation(new int[]{4,2,0,2,3,2,0});
+    public void reverse(int[] nums, int lo, int hi) {
+        while (lo < hi) {
+            int tmp = nums[lo];
+            nums[lo] = nums[hi];
+            nums[hi] = tmp;
+            lo ++;
+            hi --;
+        }
     }
 }

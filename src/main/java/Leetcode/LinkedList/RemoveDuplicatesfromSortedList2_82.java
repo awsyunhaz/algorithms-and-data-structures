@@ -28,18 +28,17 @@ public class RemoveDuplicatesfromSortedList2_82 {
 //    }
 
     // Recursion
-    public ListNode deleteDuplicates(ListNode head){
-        if (head==null)
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null || head.next == null) {
             return head;
-        if (head.next!=null && head.val==head.next.val) {
-            while (head.next != null && head.val == head.next.val)
-                head = head.next;
-            // Skip duplicate numbers
-            return deleteDuplicates(head.next);
         }
-        else {
+        if (head.val != head.next.val) {
             head.next = deleteDuplicates(head.next);
             return head;
         }
+        while (head.next != null && head.val == head.next.val) {
+            head = head.next;
+        }
+        return deleteDuplicates(head.next);
     }
 }

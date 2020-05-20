@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class mergeIntervals_56 {
+public class MergeIntervals_56 {
     public int[][] merge(int[][] intervals) {
         if (intervals.length <= 1)
             return intervals;
