@@ -7,25 +7,23 @@ public class PartitionList_86 {
         ListNode(int x) { val = x; }
     }
 
+    // one pass
     public ListNode partition(ListNode head, int x) {
-        // Two pointer - 0ms
-        ListNode before = new ListNode(0);
-        ListNode before_head = before;
-        ListNode after = new ListNode(0);
-        ListNode after_head = after;
-        while (head!=null){
-            if (head.val<x){
-                before.next = head;
-                before = before.next;
-            }
-            else{
-                after.next = head;
-                after = after.next;
+        ListNode smallNode = new ListNode(0);
+        ListNode bigNode = new ListNode(0);
+        ListNode smallHead = smallNode;
+        ListNode bigHead = bigNode;
+        while (head != null) {
+            if (head.val < x) {
+                smallNode.next = new ListNode(head.val);
+                smallNode = smallNode.next;
+            } else {
+                bigNode.next = new ListNode(head.val);
+                bigNode = bigNode.next;
             }
             head = head.next;
         }
-        before.next = after_head.next;
-        after.next = null;
-        return before_head.next;
+        smallNode.next = bigHead.next;
+        return smallHead.next;
     }
 }

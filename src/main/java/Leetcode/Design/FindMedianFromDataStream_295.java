@@ -42,13 +42,13 @@ import java.util.PriorityQueue;
 //}
 
 // Two heap - O(lgn)
-class MedianFinder {
+class FindMedianFromDataStream_295 {
 
     PriorityQueue<Integer> lower;
     PriorityQueue<Integer> higher;
 
     /** initialize your data structure here. */
-    public MedianFinder() {
+    public FindMedianFromDataStream_295() {
         lower = new PriorityQueue<>((a,b) -> (b-a));
         higher = new PriorityQueue<>();
     }

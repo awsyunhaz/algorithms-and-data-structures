@@ -2,13 +2,13 @@ package Leetcode.Design;
 
 import java.util.Stack;
 
-public class minStack_155 {
+public class MinStack_155 {
     private Stack<Integer> stack;
     private Stack<Integer> minStack;
 
     /** initialize your data structure here. */
 //    public MinStack() {
-    public minStack_155() {
+    public MinStack_155() {
         stack = new Stack<>();
         minStack = new Stack<>();
     }

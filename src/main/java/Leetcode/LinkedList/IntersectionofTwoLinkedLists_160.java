@@ -35,25 +35,16 @@ public class IntersectionofTwoLinkedLists_160 {
         return nodeA;
     }
 
-    // Hashset - 7ms
+    // Two pass, go to another list when hit the tail
+    // do not have to know diff in length
 //    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-//        HashSet<ListNode> seen = new HashSet<>();
-//        while (headA!=null){
-//            seen.add(headA);
-//            headA = headA.next;
+//        if (headA == null || headB == null) {
+//            return null;
 //        }
-//        while (headB!=null && !seen.contains(headB)){
-//            headB = headB.next;
-//        }
-//        return headB;
-//    }
-
-    // Two pass
-//    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 //        ListNode nodeA = headA, nodeB = headB;
 //        while (nodeA != nodeB) {
 //            nodeA = nodeA == null? headB: nodeA.next;
-//            nodeB = nodeB.next == null? headA: nodeB.next;
+//            nodeB = nodeB == null? headA: nodeB.next;
 //        }
 //        return nodeA;
 //    }

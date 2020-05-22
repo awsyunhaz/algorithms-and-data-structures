@@ -2,12 +2,12 @@ package Leetcode.Design;
 
 import java.util.Stack;
 
-public class maxStack_716 {
+public class MaxStack_716 {
     private Stack<Integer> stack;
     private Stack<Integer> maxStack;
 
     /** initialize your data structure here. */
-    public maxStack_716() {
+    public MaxStack_716() {
         stack = new Stack<>();
         maxStack = new Stack<>();
     }

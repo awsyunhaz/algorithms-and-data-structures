@@ -37,16 +37,16 @@ public class PalindromeLinkedList_234 {
 
     // reverse the second half - O(1) space
     public boolean isPalindrome(ListNode head) {
-        if (head==null)
+        if (head == null)
             return true;
         ListNode fast = head, slow = head;
-        while (fast!=null && fast.next!=null){
+        while (fast != null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
         }
         ListNode node = reverse(slow);
-        while (head!=null && node!=null){
-            if (head.val!=node.val)
+        while (head != null && node != null){
+            if (head.val != node.val)
                 return false;
             head = head.next;
             node = node.next;
@@ -55,14 +55,13 @@ public class PalindromeLinkedList_234 {
     }
 
     private ListNode reverse(ListNode node){
-        ListNode prev = node, succ = node.next;
-        node.next = null;
-        while(succ!=null){
-            node = succ;
-            succ = succ.next;
+        ListNode prev = null;
+        while (node != null) {
+            ListNode next = node.next;
             node.next = prev;
             prev = node;
+            node = next;
         }
-        return node;
+        return prev;
     }
 }
