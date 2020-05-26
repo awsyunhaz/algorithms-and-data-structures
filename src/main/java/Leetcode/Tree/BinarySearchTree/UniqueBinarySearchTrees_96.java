@@ -1,4 +1,4 @@
-package Leetcode.BinarySearchTree;
+package Leetcode.Tree.BinarySearchTree;
 
 public class UniqueBinarySearchTrees_96 {
     public int numTrees(int n) {

@@ -100,37 +100,34 @@ public class MinimumHeightTrees_310 {
         if (n == 1) {
             return Arrays.asList(0);
         }
-        HashMap<Integer, HashSet<Integer>> graph = new HashMap<>();
+        List<Set<Integer>> nodes = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            graph.put(i, new HashSet<>());
+            nodes.add(new HashSet<>());
         }
         for (int[] e: edges) {
-            graph.get(e[0]).add(e[1]);
-            graph.get(e[1]).add(e[0]);
+            nodes.get(e[0]).add(e[1]);
+            nodes.get(e[1]).add(e[0]);
         }
         List<Integer> leaves = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            if (graph.get(i).size() == 1) {
+            if (nodes.get(i).size() == 1) {
                 leaves.add(i);
             }
         }
-        while (true) {
-            List<Integer> newLeaves = new ArrayList<>();
+        List<Integer> newLeaves = new ArrayList<>(leaves);
+        while (!newLeaves.isEmpty()) {
+            leaves = newLeaves;
+            newLeaves = new ArrayList<>();
             for (int node: leaves) {
-                for (int next: graph.get(node)) {
-                    if (graph.get(next).size() == 0) {
-                        continue;
-                    }
-                    graph.get(next).remove(node);
-                    if (graph.get(next).size() == 1) {
-                        newLeaves.add(next);
+                for (int e: nodes.get(node)) {
+                    nodes.get(e).remove(node);
+                    // degree 1 -> new leave
+                    if (nodes.get(e).size() == 1) {
+                        newLeaves.add(e);
                     }
                 }
             }
-            if (newLeaves.isEmpty()) {
-                return leaves;
-            }
-            leaves = newLeaves;
         }
+        return leaves;
     }
 }

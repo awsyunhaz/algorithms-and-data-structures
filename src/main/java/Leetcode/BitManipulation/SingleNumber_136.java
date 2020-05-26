@@ -1,4 +1,4 @@
-package Leetcode.Bit;
+package Leetcode.BitManipulation;
 
 public class SingleNumber_136 {
     // Bit manipulation

@@ -47,14 +47,14 @@ public class LowestCommonAncestorOfABinaryTree_236 {
         if (root == null || root == p || root == q) {
             return root;
         }
-        TreeNode lcaLeft = lowestCommonAncestor(root.left, p, q);
-        TreeNode lcaRight = lowestCommonAncestor(root.right, p, q);
-        if (lcaLeft != null && lcaRight != null) {
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left != null && right != null) {
             return root;
-        } else if (lcaLeft != null) {
-            return lcaLeft;
+        } else if (left != null) {
+            return left;
         } else {
-            return lcaRight;
+            return right;
         }
     }
 }

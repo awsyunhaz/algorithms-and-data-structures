@@ -12,17 +12,19 @@ public class BalancedBinaryTree_110 {
     }
 
     public boolean isBalanced(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return true;
-        return (Math.abs(depth(root.left) - depth(root.right)) <= 1
-                && isBalanced(root.left) && isBalanced(root.right));
+        }
+        if (Math.abs(getHeight(root.left) - getHeight(root.right)) > 1) {
+            return false;
+        }
+        return isBalanced(root.left) && isBalanced(root.right);
     }
 
-    public int depth(TreeNode root){
-        if (root == null)
+    public int getHeight(TreeNode root) {
+        if (root == null) {
             return 0;
-        int leftDepth = depth(root.left);
-        int rightDepth = depth(root.right);
-        return Math.max(leftDepth, rightDepth) + 1;
+        }
+        return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
     }
 }

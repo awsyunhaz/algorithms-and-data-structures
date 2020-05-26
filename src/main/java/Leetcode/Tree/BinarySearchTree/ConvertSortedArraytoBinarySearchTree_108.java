@@ -1,4 +1,4 @@
-package Leetcode.BinarySearchTree;
+package Leetcode.Tree.BinarySearchTree;
 
 public class ConvertSortedArraytoBinarySearchTree_108 {
     public class TreeNode {

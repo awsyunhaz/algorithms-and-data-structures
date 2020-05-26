@@ -1,7 +1,4 @@
-package Leetcode.BinarySearchTree;
-
-import java.util.ArrayList;
-import java.util.List;
+package Leetcode.Tree.BinarySearchTree;
 
 public class ConvertSortedListToBinarySearchTree_109 {
 

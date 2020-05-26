@@ -1,6 +1,4 @@
-package Leetcode.BinarySearchTree;
-
-import java.util.ArrayList;
+package Leetcode.Tree.BinarySearchTree;
 
 // Inorder traversal gives ascending order
 // Follow up: add a count field to store the number of nodes in the left subtree

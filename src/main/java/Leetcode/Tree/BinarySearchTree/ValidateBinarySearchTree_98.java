@@ -1,4 +1,4 @@
-package Leetcode.BinarySearchTree;
+package Leetcode.Tree.BinarySearchTree;
 
 public class ValidateBinarySearchTree_98 {
     public class TreeNode {
@@ -8,14 +8,25 @@ public class ValidateBinarySearchTree_98 {
         TreeNode(int x) { val = x; }
     }
 
+    // in order traversal -> ascending order
 //    public boolean isValidBST(TreeNode root) {
-//        return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+//        List<Integer> lis = new ArrayList<>();
+//        traverse(root, lis);
+//        for (int i = 0; i < lis.size()-1; i++) {
+//            if (lis.get(i) >= lis.get(i+1)) {
+//                return false;
+//            }
+//        }
+//        return true;
 //    }
 //
-//    private boolean helper(TreeNode node, long min, long max){
-//        if (node==null) return true;
-//        if (node.val<=min || node.val>=max) return false;
-//        return helper(node.left, min, node.val) && helper(node.right, node.val, max);
+//    public void traverse(TreeNode root, List<Integer> lis) {
+//        if (root == null) {
+//            return;
+//        }
+//        traverse(root.left, lis);
+//        lis.add(root.val);
+//        traverse(root.right, lis);
 //    }
 
     // Use Integer object

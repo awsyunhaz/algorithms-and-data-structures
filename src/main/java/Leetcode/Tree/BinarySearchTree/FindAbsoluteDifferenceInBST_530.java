@@ -1,4 +1,4 @@
-package Leetcode.BinarySearchTree;
+package Leetcode.Tree.BinarySearchTree;
 
 public class FindAbsoluteDifferenceInBST_530 {
     public class TreeNode {

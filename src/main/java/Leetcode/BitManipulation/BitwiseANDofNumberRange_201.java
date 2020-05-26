@@ -1,4 +1,4 @@
-package Leetcode.Bit;
+package Leetcode.BitManipulation;
 
 public class BitwiseANDofNumberRange_201 {
 //    public int rangeBitwiseAnd(int m, int n) {

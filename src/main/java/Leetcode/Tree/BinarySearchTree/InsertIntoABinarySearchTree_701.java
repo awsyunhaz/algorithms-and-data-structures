@@ -1,4 +1,4 @@
-package Leetcode.BinarySearchTree;
+package Leetcode.Tree.BinarySearchTree;
 
 public class InsertIntoABinarySearchTree_701 {
     public class TreeNode {
