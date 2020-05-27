@@ -7,7 +7,7 @@ public class RandomPickIndex_398 {
         this.nums = nums;
     }
 
-    //Random - 125ms
+    // Random - 125ms
 //    public int pick(int target) {
 //        ArrayList<Integer> lis = new ArrayList<>();
 //        for (int i = 0; i < arr.length; i++){
@@ -19,15 +19,17 @@ public class RandomPickIndex_398 {
 //        return lis.get(ind);
 //    }
 
-    //Reservoir sampling - 105ms
+    // Reservoir sampling - 105ms
     public int pick(int target) {
-        int size = 0, res = 0;
-        for (int i = 0; i < nums.length; i++){
-            if (nums[i]==target){
-                double sample = Math.random();
-                if (sample < 1.0/(size+1))
+        int cnt = 0;
+        int res = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                cnt ++;
+                double rand = Math.random();
+                if (rand < 1 / (double)cnt) {
                     res = i;
-                size++;
+                }
             }
         }
         return res;

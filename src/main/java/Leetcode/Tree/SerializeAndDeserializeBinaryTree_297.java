@@ -78,26 +78,25 @@ public class SerializeAndDeserializeBinaryTree_297 {
 //
 //    // Decodes your encoded data to tree.
 //    public TreeNode deserialize(String data) {
-//        // ArrayDeque cannot add null element
-//        Queue<TreeNode> queue = new LinkedList<>();
-//        String[] arr = data.split(",");
-//        if (arr[0].equals(".")) {
+//        String[] strs = data.split(",");
+//        if (strs[0].equals("*")) {
 //            return null;
 //        }
-//        TreeNode root = new TreeNode(Integer.parseInt(arr[0]));
-//        queue.offer(root);
-//        int i = 1;
-//        while (!queue.isEmpty()) {
+//        Queue<TreeNode> queue = new LinkedList<>();
+//        TreeNode root = new TreeNode(Integer.parseInt(strs[0]));
+//        queue.add(root);
+//        for (int i = 1; i < strs.length; i+=2) {
 //            TreeNode node = queue.poll();
-//            if (!arr[i].equals(".")) {
-//                node.left = new TreeNode(Integer.parseInt(arr[i]));
-//                queue.offer(node.left);
+//            if (!strs[i].equals("*")) {
+//                TreeNode left = new TreeNode(Integer.parseInt(strs[i]));
+//                node.left = left;
+//                queue.add(left);
 //            }
-//            if (!arr[i+1].equals(".")) {
-//                node.right = new TreeNode(Integer.parseInt(arr[i+1]));
-//                queue.offer(node.right);
+//            if (!strs[i+1].equals("*")) {
+//                TreeNode right = new TreeNode(Integer.parseInt(strs[i+1]));
+//                node.right = right;
+//                queue.add(right);
 //            }
-//            i += 2;
 //        }
 //        return root;
 //    }
