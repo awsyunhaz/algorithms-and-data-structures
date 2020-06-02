@@ -1,6 +1,4 @@
-package Leetcode.Recursion;
-
-import java.util.Stack;
+package Leetcode.Backtracking;
 
 public class ScoreOfParentheses_856 {
 //    public int scoreOfParentheses(String S) {

@@ -1,4 +1,4 @@
-package Leetcode.Recursion;
+package Leetcode.Backtracking;
 
 import java.util.ArrayList;
 import java.util.Collections;
