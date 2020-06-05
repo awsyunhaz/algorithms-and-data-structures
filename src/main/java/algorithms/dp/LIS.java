@@ -1,3 +1,5 @@
+package algorithms.dp;
+
 import java.util.Scanner;
 
 public class LIS {
@@ -12,13 +14,13 @@ public class LIS {
 		for (int i=0; i<n; i++){
 			seq[i] = scanner.nextInt();
 		}
-		int[] dp = new int[n];  //ÒÔµÚi¸öÊýÎªÖÕµãµÄ×î³¤ÉÏÉýÐòÁÐ³¤¶È
+		int[] dp = new int[n];  //ï¿½Ôµï¿½iï¿½ï¿½ï¿½ï¿½Îªï¿½Õµï¿½ï¿½ï¿½î³¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½
 		
 		int maxLen = 0;
 		for (int i=1; i<n; i++){
 			dp[i] = 1;
 			for (int j=i-1; j>=0; j--){
-				if (seq[j]<seq[i])  //ÔÚÇ°i-1¸öÐòÁÐÖÐ£¬Ñ°ÕÒÖÕµãÐ¡ÓÚseq[i]µÄ×î³¤µÄ×ÓÐòÁÐ->×îÓÅ×Ó×´Ì¬  
+				if (seq[j]<seq[i])  //ï¿½ï¿½Ç°i-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½Ñ°ï¿½ï¿½ï¿½Õµï¿½Ð¡ï¿½ï¿½seq[i]ï¿½ï¿½ï¿½î³¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬  
 					dp[i] = Math.max(dp[i], dp[j]+1);
 			}
 			maxLen = Math.max(dp[i], maxLen);

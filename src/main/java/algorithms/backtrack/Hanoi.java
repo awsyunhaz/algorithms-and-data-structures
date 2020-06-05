@@ -1,3 +1,5 @@
+package algorithms.backtrack;
+
 import java.util.Scanner;
 
 public class Hanoi {

@@ -1,6 +1,6 @@
 package Leetcode.DynamicProgramming;
 
-// similar as Fibonacci number
+// similar as algorithms.dfs.Fibonacci number
 public class ClimbingStairs_70 {
     public int climbStairs(int n) {
         int[] f = new int[n+2];

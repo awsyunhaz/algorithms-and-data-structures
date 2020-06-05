@@ -1,3 +1,5 @@
+package algorithms.dp;
+
 import java.util.Scanner;
 
 public class LCS {

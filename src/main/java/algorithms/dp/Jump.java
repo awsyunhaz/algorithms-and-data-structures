@@ -1,7 +1,8 @@
-//DP-ÌøÊ¯°å
+package algorithms.dp;
 
 import java.util.*;
 
+//DP-ï¿½ï¿½Ê¯ï¿½ï¿½
 public class Jump{
    
   public static void main(String args[]){
