@@ -1,8 +1,6 @@
 package Leetcode.Random;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class GuessTheWord_843 {
     class Master {
@@ -12,28 +10,34 @@ public class GuessTheWord_843 {
     }
 
     public void findSecretWord(String[] wordlist, Master master) {
-        Set<String> candidates = new HashSet(Arrays.asList(wordlist));
+        List<String> candidates = new ArrayList<>();
+        for (String word: wordlist) {
+            candidates.add(word);
+        }
         for (int i = 0; i < 10; i++) {
-            int ind = (int) (Math.random()*candidates.size());
-            String guessStr = candidates.toArray(new String[candidates.size()])[ind];
-            int res = master.guess(guessStr);
-            Set<String> newSet = new HashSet();
-            for (String cand: candidates) {
-                if (match(cand, guessStr) == res) {
-                    newSet.add(cand);
-                }
+            int ind = (int) (Math.random() * candidates.size());
+            String strGuess = candidates.get(ind);
+            int numHit = master.guess(strGuess);
+            if (numHit == 6) {
+                return;
             }
-            candidates = newSet;
+            List<String> newCandidates = new ArrayList<>();
+            for (String str: candidates) {
+                if (compare(strGuess, str) == numHit && !strGuess.equals(str)) {
+                    newCandidates.add(str);
+                }
+                candidates = newCandidates;
+            }
         }
     }
 
-    public int match(String str1, String str2) {
-        int cnt = 0;
+    public int compare(String str1, String str2) {
+        int counter = 0;
         for (int i = 0; i < 6; i++) {
             if (str1.charAt(i) == str2.charAt(i)) {
-                cnt++;
+                counter ++;
             }
         }
-        return cnt;
+        return counter;
     }
 }
