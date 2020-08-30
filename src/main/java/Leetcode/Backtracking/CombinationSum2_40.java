@@ -6,28 +6,27 @@ import java.util.List;
 
 public class CombinationSum2_40 {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        Arrays.sort(candidates);
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
-        search(candidates, list, result, target, 0);
-        for (List<Integer> temp: result)
-            System.out.println(temp);
-        return result;
+        Arrays.sort(candidates);
+        search(res, list, candidates, 0, target);
+        return res;
     }
 
-    public void search(int[] candidates, List<Integer> list,
-                       List<List<Integer>> result, int target, int start){
-        if (target<0)
+    public void search(List<List<Integer>> res, List<Integer> list, int[] candidates, int start, int target) {
+        if (target < 0) {
             return;
-        if (target==0)
-            result.add(new ArrayList<>(list));
-        for (int i = start; i < candidates.length; i++){
-            //avoid duplicate solutions
-            if (i>start && candidates[i]==candidates[i-1])
-                continue;
-            list.add(candidates[i]);
-            search(candidates, list, result, target-candidates[i], i+1);
-            list.remove(list.size()-1);
+        }
+        if (target == 0) {
+            res.add(new ArrayList<>(list));
+            return;
+        }
+        for (int i = start; i < candidates.length; i++) {
+            if (i == start || candidates[i] != candidates[i-1]) {
+                list.add(candidates[i]);
+                search(res, list, candidates, i+1, target - candidates[i]);
+                list.remove(list.size() - 1);
+            }
         }
     }
 

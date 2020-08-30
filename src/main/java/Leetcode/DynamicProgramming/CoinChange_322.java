@@ -3,7 +3,32 @@ package Leetcode.DynamicProgramming;
 import java.util.Arrays;
 
 public class CoinChange_322 {
+    // recursion with memorization
+//    public int coinChange(int[] coins, int amount) {
+//        int[] memory = new int[amount+1];
+//        int res = change(coins, amount, memory);
+//        return res == Integer.MAX_VALUE? -1: res;
+//    }
+//
+//    public int change(int[] coins, int amount, int[] memory) {
+//        if (amount == 0) {
+//            return 0;
+//        }
+//        if (memory[amount] > 0) {
+//            return memory[amount];
+//        }
+//        int min = Integer.MAX_VALUE;
+//        for (int coin: coins) {
+//            if (coin <= amount) {
+//                memory[amount - coin] = change(coins, amount - coin, memory);
+//                min = Math.min(min, memory[amount-coin]);
+//            }
+//        }
+//        memory[amount] = min == Integer.MAX_VALUE? Integer.MAX_VALUE: min + 1;
+//        return memory[amount];
+//    }
 
+    // DP
 //    public int coinChange(int[] coins, int amount) {
 //        int[] res = new int[amount+1];
 //        Arrays.fill(res, -1);
@@ -22,7 +47,7 @@ public class CoinChange_322 {
 //        return res[amount];
 //    }
 
-    // O(kn)
+    // DP, O(kn)
     public int coinChange(int[] coins, int amount) {
         int[] res = new int[amount+1];
         // Initialize state to maximum

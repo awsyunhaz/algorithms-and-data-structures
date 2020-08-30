@@ -10,14 +10,12 @@ public class Permutations2_47 {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
         search(nums, list, result, new boolean[nums.length]);
-        for (List<Integer> temp: result)
-            System.out.println(temp);
         return result;
     }
 
     private void search(int nums[], List<Integer> list,
                         List<List<Integer>> result, boolean[] used){
-        if (list.size()==nums.length){
+        if (list.size() == nums.length){
             result.add(new ArrayList<>(list));
             return;
         }

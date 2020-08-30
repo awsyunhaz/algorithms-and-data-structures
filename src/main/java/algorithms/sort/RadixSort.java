@@ -20,9 +20,9 @@ public class RadixSort {
 	
 	public static void sort(int[] a, int d){  //d����������λ��
 		
-		int n = 1;	//LSD -> �ӵ�λ����λ
+		int n = 1;	//LSD: least significant digit
 		int[][] temp = new int[10][a.length];  //��һά��ʾ����0-9
-		int[]order = new int[10];  //order[i]��ʾ��λ��i�����ĸ���
+		int[] order = new int[10];  //order[i]��ʾ��λ��i�����ĸ���
 		
 		for (int m = 0; m < d; m++){	//�ؼ���λ
 			for (int i = 0; i < a.length; i++){

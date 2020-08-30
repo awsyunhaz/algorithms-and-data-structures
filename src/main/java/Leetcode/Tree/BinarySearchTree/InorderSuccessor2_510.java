@@ -10,25 +10,18 @@ public class InorderSuccessor2_510 {
     }
 
     public Node inorderSuccessor(Node node) {
-        if (node == null) {
-            return null;
-        }
-        if (node.right != null) {
-            // find leftmost
-            node = node.right;
-            while (node.left != null) {
-                node = node.left;
-            }
-            return node;
-        } else {
-            // find the first larger parent
-            while (node.parent != null) {
-                if (node.parent.left == node) {
-                    return node.parent;
-                }
+        // find in parent
+        if (node.right == null) {
+            while (node.parent != null && node.parent.right == node) {
                 node = node.parent;
             }
-            return null;
+            return node.parent;
         }
+        // find in right subtree
+        node = node.right;
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
     }
 }

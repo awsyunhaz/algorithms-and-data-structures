@@ -100,33 +100,34 @@ public class MinimumHeightTrees_310 {
         if (n == 1) {
             return Arrays.asList(0);
         }
-        List<Set<Integer>> nodes = new ArrayList<>();
+        List<Set<Integer>> graph = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            nodes.add(new HashSet<>());
+            graph.add(new HashSet<>());
         }
-        for (int[] e: edges) {
-            nodes.get(e[0]).add(e[1]);
-            nodes.get(e[1]).add(e[0]);
+        for (int[] edge: edges) {
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
         }
         List<Integer> leaves = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            if (nodes.get(i).size() == 1) {
+            if (graph.get(i).size() == 1) {
                 leaves.add(i);
             }
         }
-        List<Integer> newLeaves = new ArrayList<>(leaves);
-        while (!newLeaves.isEmpty()) {
-            leaves = newLeaves;
-            newLeaves = new ArrayList<>();
-            for (int node: leaves) {
-                for (int e: nodes.get(node)) {
-                    nodes.get(e).remove(node);
-                    // degree 1 -> new leave
-                    if (nodes.get(e).size() == 1) {
-                        newLeaves.add(e);
-                    }
+        while (n > 2) {
+            List<Integer> newLeaves = new ArrayList<>();
+            for (int leave: leaves) {
+                Set<Integer> set = graph.get(leave);
+                int node = set.iterator().next();
+                set.remove(node);
+                graph.get(node).remove(leave);
+                n --;
+                if (graph.get(node).size() == 1) {
+                    newLeaves.add(node);
                 }
             }
+            leaves = newLeaves;
         }
         return leaves;
     }

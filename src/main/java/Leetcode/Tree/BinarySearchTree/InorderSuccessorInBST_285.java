@@ -11,7 +11,7 @@ public class InorderSuccessorInBST_285 {
         TreeNode(int x) { val = x; }
     }
 
-    // inorder traverse
+    // inorder traversal
 //    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
 //        List<TreeNode> res = new ArrayList<>();
 //        inorderTraverse(root, res);
@@ -36,52 +36,55 @@ public class InorderSuccessorInBST_285 {
 //        inorderTraverse(root.right, res);
 //    }
 
-    // global flag
-//    private boolean flag;
+    // global variable
+//    private TreeNode lastNode = null;
+//    private TreeNode resNode = null;
 //
 //    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-//        flag = false;
-//        return inorderTraverse(root, p);
-//    }
-//
-//    public TreeNode inorderTraverse(TreeNode node, TreeNode p) {
-//        if (node == null) {
+//        if (root == null) {
 //            return null;
 //        }
-//        TreeNode left = inorderTraverse(node.left, p);
-//        // go left
-//        if (left != null) {
-//            return left;
+//        inorderSuccessor(root.left, p);
+//        if (lastNode == p) {
+//            resNode = root;
 //        }
-//        if (flag) {
-//            return node;
-//        }
-//        if (node == p) {
-//            flag = true;
-//        }
-//        // go right
-//        TreeNode right = inorderTraverse(node.right, p);
-//        if (right != null) {
-//            return right;
-//        }
-//        return null;
+//        lastNode = root;
+//        inorderSuccessor(root.right, p);
+//        return resNode;
 //    }
 
+    // iterative solution
+//    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+//        if (root == null) {
+//            return root;
+//        }
+//        TreeNode last = null;
+//        while (root != null) {
+//            if (root.val <= p.val) {
+//                root = root.right;
+//            } else {
+//                // current node is too large: go left
+//                // the current value may be the final answer
+//                last = root;
+//                root = root.left;
+//            }
+//        }
+//        return last;
+//    }
+
+
+    // recursive solution
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         if (root == null) {
-            return root;
+            return null;
         }
-        TreeNode last = null;
-        while (root != null) {
-            if (root.val <= p.val) {
-                root = root.right;
-            } else {
-                // current value is too small: go left
-                // the current value may be the answer
-                last = root;
-                root = root.left;
-            }
+        // too small: go right; equals: go right and find the next largest
+        if (root.val <= p.val) {
+            return inorderSuccessor(root.right, p);
+        } else {
+            TreeNode node = inorderSuccessor(root.left, p);
+            // if null, the current node is the final answer
+            return node == null? root : node;
         }
-        return last;
     }
 }

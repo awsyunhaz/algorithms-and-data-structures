@@ -59,42 +59,38 @@ public class CourseSchedule2_210 {
 
     // Topological sort
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        HashMap<Integer, HashSet<Integer>> nextCourse = new HashMap<>();
-        int[] inCnt = new int[numCourses];
-        Queue<Integer> queue = new ArrayDeque<>();
-        List<Integer> order = new ArrayList<>();
-        for (int[] pre: prerequisites) {
-            if (!nextCourse.containsKey(pre[1])) {
-                nextCourse.put(pre[1], new HashSet<>());
-            }
-            nextCourse.get(pre[1]).add(pre[0]);
-            inCnt[pre[0]] ++;
-        }
+        int[] indegree = new int[numCourses];
+        int[] order = new int[numCourses];
+        int ind = 0;
+        List<Set<Integer>> pres = new ArrayList<>();
         for (int i = 0; i < numCourses; i++) {
-            if (inCnt[i] == 0) {
-                queue.offer(i);
-                order.add(i);
+            pres.add(new HashSet<>());
+        }
+        for (int[] pre: prerequisites) {
+            pres.get(pre[1]).add(pre[0]);
+            indegree[pre[0]] ++;
+        }
+        List<Integer> courses = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                courses.add(i);
             }
         }
-        while (!queue.isEmpty()) {
-            int course = queue.poll();
-            if (nextCourse.containsKey(course)) {
-                for (int c: nextCourse.get(course)) {
-                    inCnt[c] --;
-                    if (inCnt[c] == 0) {
-                        queue.offer(c);
-                        order.add(c);
+        int n = numCourses;
+        while (!courses.isEmpty()) {
+            n -= courses.size();
+            List<Integer> newCourses = new ArrayList<>();
+            for (int course: courses) {
+                order[ind++] = course;
+                for (int nextCourse: pres.get(course)) {
+                    indegree[nextCourse] --;
+                    if (indegree[nextCourse] == 0) {
+                        newCourses.add(nextCourse);
                     }
                 }
             }
+            courses = newCourses;
         }
-        if (order.size() == numCourses) {
-            int[] res = new int[numCourses];
-            for (int i = 0; i < numCourses; i++) {
-                res[i] = order.get(i);
-            }
-            return res;
-        }
-        return new int[0];
+        return n == 0? order: new int[0];
     }
 }

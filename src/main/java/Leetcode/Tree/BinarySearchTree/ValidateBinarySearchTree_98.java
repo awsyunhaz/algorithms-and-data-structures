@@ -31,19 +31,16 @@ public class ValidateBinarySearchTree_98 {
 
     // Use Integer object
     public boolean isValidBST(TreeNode root) {
-        return traverse(root, null, null);
+        return validate(root, null, null);
     }
 
-    public boolean traverse(TreeNode root, Integer lowBound, Integer highBound) {
+    public boolean validate(TreeNode root, Integer lowBound, Integer highBound) {
         if (root == null) {
             return true;
         }
-        if (lowBound != null && root.val <= lowBound) {
+        if ((lowBound != null && root.val <= lowBound) || (highBound != null && root.val >= highBound)) {
             return false;
         }
-        if (highBound != null && root.val >= highBound) {
-            return false;
-        }
-        return traverse(root.left, lowBound, root.val) && traverse(root.right, root.val, highBound);
+        return validate(root.left, lowBound, root.val) && validate(root.right, root.val, highBound);
     }
 }

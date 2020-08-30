@@ -15,10 +15,8 @@ public class BalancedBinaryTree_110 {
         if (root == null) {
             return true;
         }
-        if (Math.abs(getHeight(root.left) - getHeight(root.right)) > 1) {
-            return false;
-        }
-        return isBalanced(root.left) && isBalanced(root.right);
+        return isBalanced(root.left) && isBalanced(root.right)
+                && Math.abs(getHeight(root.left) - getHeight(root.right)) <= 1;
     }
 
     public int getHeight(TreeNode root) {
