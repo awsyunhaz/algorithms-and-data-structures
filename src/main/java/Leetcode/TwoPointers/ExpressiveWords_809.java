@@ -1,15 +1,15 @@
 package Leetcode.TwoPointers;
 
 public class ExpressiveWords_809 {
-    public int expressiveWords(String S, String[] words) {
-        int res = 0;
-        for (String word: words) {
-            if (isStretchy(S, 0, word, 0)) {
-                res ++;
-            }
-        }
-        return res;
-    }
+//    public int expressiveWords(String S, String[] words) {
+//        int res = 0;
+//        for (String word: words) {
+//            if (isStretchy(S, 0, word, 0)) {
+//                res ++;
+//            }
+//        }
+//        return res;
+//    }
 
     // two pointers - recursive
 //    public boolean isStretchy(String S, int i, String word, int j) {
@@ -43,6 +43,16 @@ public class ExpressiveWords_809 {
 //        }
 //        return false;
 //    }
+
+    public int expressiveWords(String S, String[] words) {
+        int res = 0;
+        for (String word: words) {
+            if (isStretchy(S, word)) {
+                res ++;
+            }
+        }
+        return res;
+    }
 
     // two pointers - iterative
     public boolean isStretchy(String S, String word) {

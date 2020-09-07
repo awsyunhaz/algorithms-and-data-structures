@@ -1,6 +1,6 @@
 package Leetcode.BinarySearch;
 
-// O(n)
+// worst case O(n)
 public class SearchinRotatedSortedArray2_81 {
     public boolean search(int[] nums, int target) {
         int lo = 0, hi = nums.length - 1;
