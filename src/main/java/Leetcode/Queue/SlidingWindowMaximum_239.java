@@ -15,6 +15,7 @@ public class SlidingWindowMaximum_239 {
             if (!queue.isEmpty() && queue.peek() < i-k+1) {
                 queue.poll();
             }
+            // keep the max queue in decreasing order
             while (!queue.isEmpty() && nums[queue.peekLast()] < nums[i]) {
                 queue.pollLast();
             }

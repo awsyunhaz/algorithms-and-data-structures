@@ -1,4 +1,4 @@
-package Leetcode.Tree.BinarySearchTree;
+package Leetcode.HashMap.SortedMap;
 
 import java.util.Map;
 import java.util.TreeMap;

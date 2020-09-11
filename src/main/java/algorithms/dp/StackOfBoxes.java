@@ -3,6 +3,7 @@ package algorithms.dp;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+// In this problem, there are unlimited number of boxes
 public class StackOfBoxes {
     // backtrack with memorization
 //    public static int StackOfBoxes(int[][] boxes) {
