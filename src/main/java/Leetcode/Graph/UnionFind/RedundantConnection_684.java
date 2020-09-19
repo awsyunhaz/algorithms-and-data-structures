@@ -1,8 +1,4 @@
-package Leetcode.Graph;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+package Leetcode.Graph.UnionFind;
 
 public class RedundantConnection_684 {
 

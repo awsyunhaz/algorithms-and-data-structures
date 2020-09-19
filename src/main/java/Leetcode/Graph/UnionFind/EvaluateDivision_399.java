@@ -1,8 +1,6 @@
-package Leetcode.Graph;
+package Leetcode.Graph.UnionFind;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class EvaluateDivision_399 {

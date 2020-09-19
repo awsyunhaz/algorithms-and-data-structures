@@ -2,55 +2,79 @@ package Leetcode.DynamicProgramming;
 
 public class WildcardMatching_44 {
 
-    // Search - TLE
+    // Search, O(N^N) - TLE
 //    public boolean isMatch(String s, String p) {
-//        return match(s, p, 0, 0);
+//        return isMatch(s, p, 0, 0);
 //    }
 //
-//    public boolean match(String s, String p, int si, int pi) {
-//        if (pi == p.length()) {
-//            return si == s.length();
-//        }
-//        if (si == s.length()) {
-//            for (int i = pi; i < p.length(); i++) {
-//                if (p.charAt(i) != '*') {
-//                    return false;
-//                }
-//            }
+//    public boolean isMatch(String s, String p, int sind, int pind) {
+//        if (sind == s.length() && pind == p.length()) {
 //            return true;
 //        }
-//
-//        if (p.charAt(pi) == '*') {
-//            if (pi+1 < p.length() && p.charAt(pi+1)=='*')
-//                return match(s, p, si, pi+1);
-//            return match(s, p, si, pi+1) || match(s, p, si+1, pi);
-//        } else {
-//            if (p.charAt(pi) == '?' || s.charAt(si) == p.charAt(pi)) {
-//                return match(s, p, si+1, pi+1);
-//            } else {
-//                return false;
-//            }
+//        if (sind == s.length()) {
+//            // remaining chars in p are all stars
+//            return p.charAt(pind) == '*' && isMatch(s, p, sind, pind+1);
 //        }
+//        if (pind == p.length()) {
+//            return false;
+//        }
+//        if (p.charAt(pind) == '*') {
+//            // zero, one or more chars
+//            return isMatch(s, p, sind+1, pind) || isMatch(s, p, sind, pind+1);
+//        }
+//        if (p.charAt(pind) == '?') {
+//            return isMatch(s, p, sind+1, pind+1);
+//        }
+//        return s.charAt(sind) == p.charAt(pind) && isMatch(s, p, sind+1, pind+1);
 //    }
 
-    // DP - O(ST)
+    // Top-down search with memory, O(MN)
+//    public boolean isMatch(String s, String p) {
+//        Boolean[][] memory = new Boolean[s.length() + 1][p.length() + 1];
+//        return isMatch(s, p, 0, 0, memory);
+//    }
+//
+//    public boolean isMatch(String s, String p, int sind, int pind, Boolean[][] memory) {
+//        if (memory[sind][pind] != null) {
+//            return memory[sind][pind];
+//        } else if (sind == s.length() && pind == p.length()) {
+//            memory[sind][pind] = true;
+//        } else if (sind == s.length()) {
+//            // remaining chars in p are all stars
+//            memory[sind][pind] = p.charAt(pind) == '*' && isMatch(s, p, sind, pind+1, memory);
+//        } else if (pind == p.length()) {
+//            memory[sind][pind] = false;
+//        } else if (p.charAt(pind) == '*') {
+//            // 0 or >= 1 char
+//            memory[sind][pind] = isMatch(s, p, sind+1, pind, memory) || isMatch(s, p, sind, pind+1, memory);
+//        } else if (p.charAt(pind) == '?') {
+//            memory[sind][pind] = isMatch(s, p, sind+1, pind+1, memory);
+//        } else {
+//            memory[sind][pind] = s.charAt(sind) == p.charAt(pind) && isMatch(s, p, sind+1, pind+1, memory);
+//        }
+//        return memory[sind][pind];
+//    }
+
+    // DP - O(MN)
     public boolean isMatch(String s, String p) {
-        boolean[][] dp = new boolean[s.length()+1][p.length()+1];
+        int m = s.length(), n = p.length();
+        boolean[][] dp = new boolean[m + 1][n + 1];
         dp[0][0] = true;
-        for (int i = 0; i < p.length(); i++) {
-            if (p.charAt(i) == '*') {
-                dp[0][i+1] = dp[0][i];
-            }
+        for (int j = 1; j <= n; j++) {
+            dp[0][j] = p.charAt(j-1) == '*' & dp[0][j-1];
         }
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < p.length(); j++) {
-                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?') {
-                    dp[i+1][j+1] = dp[i][j];
-                } else if (p.charAt(j) == '*') {
-                    dp[i+1][j+1] = dp[i+1][j] || dp[i][j+1] || dp[i][j];
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (p.charAt(j-1) == '*') {
+                    // 0 or >= 1 char
+                    dp[i][j] = dp[i-1][j] || dp[i][j-1];
+                } else if (p.charAt(j-1) == '?') {
+                    dp[i][j] = dp[i-1][j-1];
+                } else {
+                    dp[i][j] = s.charAt(i-1) == p.charAt(j-1) && dp[i-1][j-1];
                 }
             }
         }
-        return dp[s.length()][p.length()];
+        return dp[m][n];
     }
 }
