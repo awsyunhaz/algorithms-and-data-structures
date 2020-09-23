@@ -30,20 +30,46 @@ public class WordBreak_139 {
 //        return false;
 //    }
 
+    // Backtrack with memorization, O(n^2)
+//    public boolean wordBreak(String s, List<String> wordDict) {
+//        HashSet<String> wordSet = new HashSet<>(wordDict);
+//        Boolean[] memory = new Boolean[s.length()];
+//        return wordBreak(s, 0, wordSet, memory);
+//    }
+//
+//    public boolean wordBreak(String s, int i, HashSet<String> wordSet, Boolean[] memory) {
+//        if (i == s.length()) {
+//            return true;
+//        }
+//        if (memory[i] != null) {
+//            return memory[i];
+//        }
+//        for (int j = i+1; j <= s.length(); j++) {
+//            if (wordSet.contains(s.substring(i, j))) {
+//                if (wordBreak(s, j, wordSet, memory)) {
+//                    memory[i] = true;
+//                    return true;
+//                }
+//            }
+//        }
+//        memory[i] = false;
+//        return false;
+//    }
+
     // DP - O(n^2)
     public boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> wordSet = new HashSet<>(wordDict);
-        boolean[] dp = new boolean[s.length()+1];
+        int len = s.length();
+        boolean[] dp = new boolean[len+1];
         dp[0] = true;
-        for (int end = 1; end <= s.length(); end++) {
-            for (int start = 0; start < end; start++) {
-                // If we can reach start and (start, end) is in dictionary, we can reach end
-                if (dp[start] && wordDict.contains(s.substring(start, end))) {
-                    dp[end] = true;
-                    break;
-                };
+        for (int i = 0; i < len; i++) {
+            for (int j = i+1; j <= len; j++) {
+                // (0, j) can be reached if (0, i) can be reached and (i, j) is in wordDict
+                if (wordSet.contains(s.substring(i, j)) && dp[i]) {
+                    dp[j] = true;
+                }
             }
         }
-        return dp[s.length()];
+        return dp[len];
     }
 }

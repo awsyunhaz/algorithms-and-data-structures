@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class LongestIncreasingSubsequences {
 
-    // backtrack, O(n^n), TLE
+    // backtrack, O(2^n), TLE
 //    public int lengthOfLIS(int[] nums) {
 //        int max = 0;
 //        for (int i = 0; i < nums.length; i++) {

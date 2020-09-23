@@ -2,7 +2,7 @@ package Leetcode.DynamicProgramming;
 
 public class WildcardMatching_44 {
 
-    // Search, O(N^N) - TLE
+    // Search, O(2^N) - TLE
 //    public boolean isMatch(String s, String p) {
 //        return isMatch(s, p, 0, 0);
 //    }
