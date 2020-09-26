@@ -1,4 +1,4 @@
-package Leetcode.Trie;
+package Leetcode.Tree.Trie;
 
 import java.util.HashMap;
 

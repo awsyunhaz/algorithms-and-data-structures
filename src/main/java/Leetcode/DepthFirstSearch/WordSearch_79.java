@@ -1,4 +1,4 @@
-package Leetcode.Backtracking;
+package Leetcode.DepthFirstSearch;
 
 public class WordSearch_79 {
     // DFS - 125ms
@@ -42,7 +42,8 @@ public class WordSearch_79 {
 //        return false;
 //    }
 
-    // Modified DFS - 5ms
+    // Modified DFS, 5ms
+    // O(N*3^L), N: number of board cells, L: length of word, 3: four directions, don't go back
     private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
     public boolean exist(char[][] board, String word) {

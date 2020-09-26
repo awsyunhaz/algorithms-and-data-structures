@@ -1,10 +1,42 @@
-package Leetcode.Design;
+package Leetcode.Tree.Trie;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
-public class AddandSearchWord_211 {
+public class DesignAddandSearchWordsDataStructure_211 {
+    // Brute force, TLE
+//    HashSet<String> set;
+//
+//    /** Initialize your data structure here. */
+//    public DesignAddandSearchWordsDataStructure_211() {
+//        set = new HashSet<>();
+//    }
+//
+//    /** Adds a word into the data structure. */
+//    public void addWord(String word) {
+//        set.add(word);
+//    }
+//
+//    /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
+//    public boolean search(String word) {
+//        for (String str: set) {
+//            if (str.length() == word.length()) {
+//                int ind = 0;
+//                while (ind < word.length()) {
+//                    if (word.charAt(ind) != '.' && word.charAt(ind) != str.charAt(ind)) {
+//                        break;
+//                    }
+//                    ind ++;
+//                }
+//                if (ind == word.length()) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
 
-    // hashmap + backtracking, (2^n), TLE
+    // Hash map + backtracking, O(2^n), TLE
 //    HashSet<String> dict;
 //
 //    /** Initialize your data structure here. */
@@ -35,7 +67,7 @@ public class AddandSearchWord_211 {
 //        return dict.contains(word);
 //    }
 
-    // Trie
+    // Trie, O(MN), M: word length, N: number of words
     class TrieNode{
         TrieNode[] children;
         boolean isEnd;
@@ -49,7 +81,7 @@ public class AddandSearchWord_211 {
     TrieNode root;
 
     /** Initialize your data structure here. */
-    public AddandSearchWord_211() {
+    public DesignAddandSearchWordsDataStructure_211() {
         root = new TrieNode();
     }
 

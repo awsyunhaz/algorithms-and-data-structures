@@ -3,7 +3,7 @@ package Leetcode.Backtracking;
 import java.util.HashMap;
 
 public class WordPattern2_291 {
-    // O(n^m)
+    // O(n^m), n: length of string, m: length of pattern
     public boolean wordPatternMatch(String pattern, String str) {
         HashMap<Character, String> map = new HashMap<>();
         return wordPatternMatch(pattern, str, 0, 0, map);
