@@ -46,17 +46,17 @@ public class WordSearch2_212 {
     // Trie, O(B*3^L)
     class TrieNode {
         public TrieNode[] children;
-        public boolean isEnd;
+        public String word;
 
         public TrieNode() {
             children = new TrieNode[26];
-            isEnd = false;
+            word = null;
         }
     }
 
     public List<String> findWords(char[][] board, String[] words) {
         TrieNode root = new TrieNode();
-        HashSet<String> res = new HashSet<>();
+        List<String> res = new ArrayList<>();
 
         for (String word: words) {
             addWord(root, word);
@@ -64,16 +64,15 @@ public class WordSearch2_212 {
 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                StringBuffer sb = new StringBuffer();
                 List<String> foundWords = new ArrayList<>();
-                search(board, i, j, root, foundWords, sb);
+                search(board, i, j, root, foundWords);
                 for (String word: foundWords) {
                     res.add(word);
                 }
             }
         }
 
-        return new ArrayList<>(res);
+        return res;
     }
 
     public void addWord(TrieNode node, String word) {
@@ -83,18 +82,19 @@ public class WordSearch2_212 {
             }
             node = node.children[c - 'a'];
         }
-        node.isEnd = true;
+        node.word = word;
     }
 
 
-    public void search(char[][] board, int i, int j, TrieNode node, List<String> res, StringBuffer sb) {
+    public void search(char[][] board, int i, int j, TrieNode node, List<String> res) {
         TrieNode child = node.children[board[i][j] - 'a'];
         if (child == null) {
             return;
         }
-        sb.append(board[i][j]);
-        if (child.isEnd) {
-            res.add(sb.toString());
+        if (child.word != null) {
+            res.add(child.word);
+            // de-duplicate
+            child.word = null;
         }
 
         char c = board[i][j];
@@ -103,10 +103,9 @@ public class WordSearch2_212 {
         for (int[] dir: dirs) {
             int row = i + dir[0], col = j + dir[1];
             if (row >= 0 && row < board.length && col >= 0 && col < board[0].length && board[row][col] != ' ') {
-                search(board, row, col, child, res, sb);
+                search(board, row, col, child, res);
             }
         }
         board[i][j] = c;
-        sb.deleteCharAt(sb.length() - 1);
     }
 }

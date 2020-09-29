@@ -1,6 +1,4 @@
-package Leetcode.Heap;
-
-import java.util.PriorityQueue;
+package Leetcode.Tree.Heap;
 
 public class KthSmallestElementInASortedMatrix_378 {
 

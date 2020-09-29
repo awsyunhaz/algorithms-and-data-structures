@@ -1,4 +1,4 @@
-package Leetcode.Heap;
+package Leetcode.Tree.Heap;
 
 import java.util.Arrays;
 import java.util.HashSet;

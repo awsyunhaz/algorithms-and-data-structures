@@ -1,56 +1,52 @@
 package Leetcode.DynamicProgramming;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class LongestIncreasingSubsequences {
+public class LongestIncreasingSubsequences_300 {
 
     // backtrack, O(2^n), TLE
 //    public int lengthOfLIS(int[] nums) {
-//        int max = 0;
+//        int maxLen = 0;
 //        for (int i = 0; i < nums.length; i++) {
-//            max = Math.max(max, lis(nums, i));
+//            maxLen = Math.max(maxLen, lengthOfLIS(nums, i) + 1);
 //        }
-//        return max;
+//        return maxLen;
 //    }
 //
-//    public int lis(int[] nums, int i) {
-//        if (i == nums.length-1) {
-//            return 1;
-//        }
-//        int max = 1;
-//        for (int j = i+1; j < nums.length; j++) {
-//            if (nums[j] > nums[i]) {
-//                max = Math.max(max, lis(nums, j)+1);
+//    public int lengthOfLIS(int[] nums, int start) {
+//        int maxLen = 0;
+//        for (int i = start+1; i < nums.length; i++) {
+//            if (nums[i] > nums[start]) {
+//                maxLen = Math.max(maxLen, lengthOfLIS(nums, i) + 1);
 //            }
 //        }
-//        return max;
+//        return maxLen;
 //    }
 
     // backtrack with memorization, O(n^2), 20ms
 //    public int lengthOfLIS(int[] nums) {
-//        int max = 0;
-//        int[] memory = new int[nums.length];
+//        int[] mem = new int[nums.length];
+//        Arrays.fill(mem, -1);
+//        int maxLen = 0;
 //        for (int i = 0; i < nums.length; i++) {
-//            max = Math.max(max, lis(nums, i, memory));
+//            maxLen = Math.max(maxLen, lengthOfLIS(nums, i, mem) + 1);
 //        }
-//        return max;
+//        return maxLen;
 //    }
 //
-//    public int lis(int[] nums, int i, int[] memory) {
-//        if (memory[i] > 0) {
-//            return memory[i];
+//    public int lengthOfLIS(int[] nums, int start, int[] mem) {
+//        if (mem[start] >= 0) {
+//            return mem[start];
 //        }
-//        if (i == nums.length-1) {
-//            return 1;
-//        }
-//        int max = 1;
-//        for (int j = i+1; j < nums.length; j++) {
-//            if (nums[j] > nums[i]) {
-//                max = Math.max(max, lis(nums, j, memory)+1);
+//        int maxLen = 0;
+//        for (int i = start+1; i < nums.length; i++) {
+//            if (nums[i] > nums[start]) {
+//                maxLen = Math.max(maxLen, lengthOfLIS(nums, i, mem) + 1);
 //            }
 //        }
-//        memory[i] = max;
-//        return max;
+//        mem[start] = maxLen;
+//        return maxLen;
 //    }
 
     // DP - O(n^2)

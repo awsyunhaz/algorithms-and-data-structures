@@ -3,24 +3,31 @@ package Leetcode.DynamicProgramming;
 public class RegularExpressionMatching_10 {
 
     // Backtrack O(2^(S+P))
+    // with memorization, O(SP)
 //    public boolean isMatch(String s, String p) {
-//        return match(s, p, 0, 0);
+//        Boolean[][] mem = new Boolean[s.length()+1][p.length()+1];
+//        isMatch(s, p, 0, 0, mem);
+//        return mem[0][0];
 //    }
 //
-//    public boolean match(String s, String p, int si, int pi) {
-//        if (pi == p.length()) {
-//            return si == s.length();
+//    public boolean isMatch(String s, String p, int i, int j, Boolean[][] mem) {
+//        if (mem[i][j] != null) {
+//            return mem[i][j];
+//        }
+//        if (j == p.length()) {
+//            mem[i][j] = i == s.length();
+//            return mem[i][j];
 //        }
 //
-//        // Whether the first characters match
-//        boolean firstMatch = (si != s.length() && (s.charAt(si) == p.charAt(pi) || p.charAt(pi) == '.'));
+//        boolean firstMatch = i < s.length() && (p.charAt(j) == '.' || s.charAt(i) == p.charAt(j));
 //
-//        if (p.length() > pi + 1 && p.charAt(pi+1) == '*') {
-//            // Repeat 0 or 1 time
-//            return match(s, p, si, pi+2) || (firstMatch && match(s, p, si+1, pi));
+//        if (j+1 < p.length() && p.charAt(j+1) == '*') {
+//            // match for zero or one time
+//            mem[i][j] = isMatch(s, p, i, j+2, mem) || (firstMatch && isMatch(s, p, i+1, j, mem));
 //        } else {
-//            return firstMatch && match(s, p, si+1, pi+1);
+//            mem[i][j] = firstMatch && isMatch(s, p, i+1, j+1, mem);
 //        }
+//        return mem[i][j];
 //    }
 
     // DP - O(SP)
