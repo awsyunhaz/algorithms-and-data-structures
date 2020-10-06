@@ -35,28 +35,55 @@ public class RegularExpressionMatching_10 {
     // p[j] = '*' -> dp[i][j] = dp[i][j-2] || dp[i][j-1] || dp[i-1][j], if s[i] = p[j-1] || p[j-1] = '.'
     //                          (0 time,        1 time,     multiple times)
     //                        = dp[i][j-2], if else (0 time)
+//    public boolean isMatch(String s, String p) {
+//        boolean[][] dp = new boolean[s.length()+1][p.length()+1];
+//        dp[0][0] = true;
+//        for (int i = 0; i < p.length(); i++) {
+//            if (p.charAt(i) == '*') {
+//                dp[0][i+1] = dp[0][i-1];
+//            }
+//        }
+//        for (int i = 0; i < s.length(); i++) {
+//            for (int j = 0; j < p.length(); j++) {
+//                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') {
+//                    dp[i+1][j+1] = dp[i][j];
+//                }
+//                if (p.charAt(j) == '*') {
+//                    if (s.charAt(i) == p.charAt(j-1) || p.charAt(j-1) == '.') {
+//                        dp[i+1][j+1] = dp[i+1][j-1] || dp[i+1][j] || dp[i][j+1];
+//                    } else {
+//                        dp[i+1][j+1] = dp[i+1][j-1];
+//                    }
+//                }
+//            }
+//        }
+//        return dp[s.length()][p.length()];
+//    }
+
+    // DP another implementation
     public boolean isMatch(String s, String p) {
-        boolean[][] dp = new boolean[s.length()+1][p.length()+1];
+        int slen = s.length(), plen = p.length();
+        boolean[][] dp = new boolean[slen+1][plen+1];
         dp[0][0] = true;
-        for (int i = 0; i < p.length(); i++) {
-            if (p.charAt(i) == '*') {
-                dp[0][i+1] = dp[0][i-1];
+        for (int j = 1; j <= plen; j++) {
+            if (p.charAt(j-1) == '*') {
+                dp[0][j] = dp[0][j-2];
             }
         }
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < p.length(); j++) {
-                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') {
-                    dp[i+1][j+1] = dp[i][j];
-                }
-                if (p.charAt(j) == '*') {
-                    if (s.charAt(i) == p.charAt(j-1) || p.charAt(j-1) == '.') {
-                        dp[i+1][j+1] = dp[i+1][j-1] || dp[i+1][j] || dp[i][j+1];
-                    } else {
-                        dp[i+1][j+1] = dp[i+1][j-1];
-                    }
+
+        for (int i = 1; i <= slen; i++) {
+            for (int j = 1; j <= plen; j++) {
+                if (p.charAt(j-1) == '*') {
+                    boolean lastMatch = p.charAt(j-2) == '.' || p.charAt(j-2) == s.charAt(i-1);
+                    // '*' match for zero, one or more
+                    dp[i][j] = dp[i][j-2] || dp[i][j-1] || (dp[i-1][j] && lastMatch);
+                } else {
+                    boolean thisMatch = p.charAt(j-1) == '.' || p.charAt(j-1) == s.charAt(i-1);
+                    dp[i][j] = dp[i-1][j-1] && thisMatch;
                 }
             }
         }
-        return dp[s.length()][p.length()];
+
+        return dp[slen][plen];
     }
 }
