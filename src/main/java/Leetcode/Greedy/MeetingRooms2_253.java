@@ -1,4 +1,4 @@
-package Leetcode.Array;
+package Leetcode.Greedy;
 
 import java.util.Arrays;
 
@@ -13,6 +13,7 @@ public class MeetingRooms2_253 {
         }
         Arrays.sort(start);
         Arrays.sort(end);
+        // j is the earliest ending time of all rooms
         int j = 0;
         for (int i = 0; i < intervals.length; i++){
             if (start[i] < end[j])

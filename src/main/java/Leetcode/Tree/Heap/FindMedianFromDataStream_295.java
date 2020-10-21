@@ -1,4 +1,4 @@
-package Leetcode.Design;
+package Leetcode.Tree.Heap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ import java.util.PriorityQueue;
 //    }
 //}
 
-// Two heap - O(lgn)
+// Two heap - O(logn)
 class FindMedianFromDataStream_295 {
 
     PriorityQueue<Integer> lower;

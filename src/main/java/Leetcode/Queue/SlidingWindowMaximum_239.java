@@ -4,6 +4,24 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class SlidingWindowMaximum_239 {
+
+    // O(nk)
+//    public int[] maxSlidingWindow(int[] nums, int k) {
+//        int n = nums.length;
+//        if (n == 0)
+//            return new int[]{};
+//        int[] res = new int[n - k + 1];
+//        for (int i = 0; i + k <= n; i++) {
+//            int max = nums[i];
+//            for (int j = i + 1; j < i + k; j++) {
+//                max = Math.max(max, nums[j]);
+//            }
+//            res[i] = max;
+//        }
+//        return res;
+//    }
+
+    // O(n), a element can only be add and poll once
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
         if (n == 0)
