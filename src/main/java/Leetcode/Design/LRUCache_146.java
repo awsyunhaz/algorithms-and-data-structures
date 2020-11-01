@@ -1,9 +1,41 @@
 package Leetcode.Design;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
 // Double linked list + Hash map  - O(1)
 public class LRUCache_146 {
+    // O(n), queue + hash map
+//    private Queue<Integer> queue;
+//    private Map<Integer, Integer> map;
+//    private int cap;
+//
+//    public LRUCache(int capacity) {
+//        queue = new LinkedList<>();
+//        map = new HashMap<>();
+//        cap = capacity;
+//    }
+//
+//    public int get(int key) {
+//        if (queue.remove(key)) {
+//            queue.add(key);
+//        }
+//        return map.getOrDefault(key, -1);
+//    }
+//
+//    public void put(int key, int value) {
+//        queue.remove(key);
+//        queue.add(key);
+//        map.put(key, value);
+//        if (queue.size() > cap) {
+//            int LRUKey = queue.poll();
+//            map.remove(LRUKey);
+//        }
+//    }
+
+    // O(1), doubly linked list + hash map
     private class DLinkedNode {
         int key, value;
         DLinkedNode prev, next;
