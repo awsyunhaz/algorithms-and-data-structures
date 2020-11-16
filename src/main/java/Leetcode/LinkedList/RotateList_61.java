@@ -7,8 +7,8 @@ public class RotateList_61 {
         ListNode(int x) { val = x; }
     }
 
-    public ListNode rotateRight(ListNode head, int k) {
-        // 6ms
+    // Two pointer, 6ms
+//    public ListNode rotateRight(ListNode head, int k) {
 //        if (head==null)
 //            return head;
 //        ListNode fast = head, slow = head;
@@ -28,23 +28,44 @@ public class RotateList_61 {
 //        head = slow.next;
 //        slow.next = null;
 //        return head;
+//    }
 
-        //Dummy head - 6ms
-        if (head==null)
-            return null;
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode fast = dummy, slow = dummy;
-        int size = 0;
-        while (fast.next!=null){
-            size++;
-            fast = fast.next;
+    // Dummy head - 6ms
+//    public ListNode rotateRight(ListNode head, int k) {
+//        if (head==null)
+//            return null;
+//        ListNode dummy = new ListNode(0);
+//        dummy.next = head;
+//        ListNode fast = dummy, slow = dummy;
+//        int size = 0;
+//        while (fast.next!=null){
+//            size++;
+//            fast = fast.next;
+//        }
+//        for (int i = 0; i < size-k%size; i++)
+//            slow = slow.next;
+//        fast.next = dummy.next;
+//        dummy.next = slow.next;
+//        slow.next = null;
+//        return dummy.next;
+//    }
+
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null) {
+            return head;
         }
-        for (int i = 0; i < size-k%size; i++)
-            slow = slow.next;
-        fast.next = dummy.next;
-        dummy.next = slow.next;
-        slow.next = null;
-        return dummy.next;
+        int len = 1;
+        ListNode node = head;
+        while (node.next != null) {
+            node = node.next;
+            len ++;
+        }
+        node.next = head;
+        for (int i = 0; i < len - k%len; i++) {
+            node = node.next;
+        }
+        head = node.next;
+        node.next = null;
+        return head;
     }
 }
